@@ -1,5 +1,5 @@
 /.htaccess                              line 2
 /app/Config.php                         line 9
-/app/Config.php                         line [29, 33]
+/app/Config.php                         line [29:33]
 /app/Views/user/layout.html             line 1
 /app/Views/admin/layout.html            line 1
