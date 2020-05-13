@@ -1,0 +1,26 @@
+{% extends 'user/layout.html' %}
+
+{% block content %}
+	<h1>RESOLUÇÕES</h1>
+	<p>Aqui nas resoluções você tem acesso a todas as questões resolvidas e comentadas do <strong>IFCE <i>Campi</i>
+	Fortaleza e Caucaia</strong>. Para acessar as resoluções basta selecionar o <i><strong>ano-semestre</strong></i>
+	que a prova foi realizada e a disciplina que deseja.</p>
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Ano-semestre da prova</th>
+				<th scope="col">Botão para acessar as resoluções</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for resolution_year in resolution_years %}
+			<tr class="table-light">
+				<th scope="row">{{ resolution_year.year }}</th>
+				<td><a class="btn btn-success" href="{{ url_base_user }}materiais/resolucoes/{{ resolution_year.year }}" style="color: white;">Acessar</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

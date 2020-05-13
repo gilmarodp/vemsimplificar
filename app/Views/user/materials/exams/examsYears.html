@@ -1,0 +1,28 @@
+{% extends 'user/layout.html' %}
+
+{% block content %}
+
+	<h1>Provas</h1>
+	<p>
+		Aqui você tem acesso a todas as provas oficiais do <strong>IFCE <i>Campi</i> Fortaleza e Caucaia</strong>.
+		Para acessar as provas oficiais basta selecionar o <strong><i>ano-semestre</i></strong> que a prova foi
+		realizada e abrir o <strong>pdf</strong> da prova oficial.
+	</p>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Ano-semestre da prova</th>
+				<th scope="col">Botão para acessar a prova</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for exam in exams %}
+			<tr class="table-light">
+				<th scope="row">{{ exam.year }}</th>
+				<td><a class="btn btn-success" target="_blank" href="{{ exam.link }}" style="color: white;">Acessar</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

@@ -1,0 +1,2 @@
+.htaccess			line 2
+Config.php			line 3

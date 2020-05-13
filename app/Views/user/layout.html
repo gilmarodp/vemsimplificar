@@ -1,0 +1,78 @@
+{% set url_base_user = "http://192.168.0.199/mundo_comentado/" %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ name_site }} - {{ section_site }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ assets }}css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{ assets }}css/style.css">
+</head>
+<body>
+    <div class="menu">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav-menu">
+          <a class="navbar-brand" href="{{ url_base_user }}">{{ name_site }}</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarColor01">
+            <ul class="navbar-nav m1-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_base_user }}home">Início</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_base_user }}materiais">Materiais</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_base_user }}contato">Contato</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_base_user }}sobre">Sobre</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+    </div>
+  
+    <div class="container">
+      <div class="row">
+        <div id="content" class="col-sm-10">
+          {% block content %}{% endblock %}
+        </div>
+
+        <div id="advertisement" class="col-sm-2">
+          <center>
+          {% include 'user/advertisement.html' %}
+          </center>
+        </div>
+      </div>
+    </div><br>
+
+    <div class="col-sm-12 footer">
+        <footer>
+            <center>
+                <p style="color: var(--white);">{{ name_site }} &copy {{ date }}</p>
+            </center>
+        </footer>
+    </div>
+
+    <!-- JavaScript: jQuery, Bootstrap and Popper -->
+    <script src="{{ assets }}js/jquery-3.2.1.slim.min.js"></script>
+    <script src="{{ assets}}js/popper.min.js"></script>
+    <script src="{{ assets }}js/bootstrap.min.js"></script>
+    
+    <!-- MathJax Script -->
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

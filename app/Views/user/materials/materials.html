@@ -1,0 +1,32 @@
+{% extends 'user/layout.html' %}
+
+{% block content %}
+
+	<h1>Materiais</h1>
+	<p>
+		Nessa aba do site você terá acesso aos materiais que o nosso projeto "<strong>{{ name_site }}</strong>"
+		está disponibilizando gratuitamente para alunos da rede pública que sonham em entrar em uma escola técnica
+		de excelência. No botão <strong>Provas</strong> você terá acesso as provas oficiais do <strong>IFCE
+		<i>Campi</i> Fortaleza e Caucaia</strong>, já no botão <strong>Resoluções</strong> você terá acesso as
+		resoluções comentadas produzidas pela equipe de gestores de provas do nosso projeto.
+	</p>
+
+	<div class="card border-success mb-3" style="max-width: 100%;">
+		<div class="card-body">
+		  <h4 class="card-title">Provas</h4>
+		  <p class="card-text">Tenha acesso as provas oficiais do <strong>IFCE <i>Campi</i> Fortaleza e Caucaia
+		  </strong> com o botão abaixo.</p>
+		  <a href="{{ url_base_user }}materiais/provas" class="btn btn-success">Provas</a>
+		</div>
+	</div>
+
+	<div class="card border-success mb-3" style="max-width: 100%;">
+		<div class="card-body">
+		  <h4 class="card-title">Resoluções</h4>
+		  <p class="card-text">Tenha acesso as resoluções produzidas pelos gestores de provas do nosso projeto
+		  "<strong>{{ name_site }}</strong>".</p>
+		  <a href="{{ url_base_user }}materiais/resolucoes" class="btn btn-success">Resoluções</a>
+		</div>
+	</div>
+
+{% endblock %}

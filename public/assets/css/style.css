@@ -1,0 +1,48 @@
+.navbar-dark .navbar-nav .nav-link {
+	color: var(--white);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+	background-color: 	var(--white);
+	color: 				#02B875 !important;
+}
+
+.nav-menu {
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+	.nav-menu {
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+}
+
+#content {
+	min-height: 75vh;
+	height: auto;
+	position: relative;
+}
+
+.footer {
+	background-color: #02B875;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	margin-bottom: -10px;
+}
+
+/* M A T E R I A I S */
+.box {
+	height: 120px;
+	width: 300px;
+	margin: 20px 10px;
+	display: inline-block;
+}
+.box p{
+	text-align: center;
+	vertical-align: middle;
+	left: 50%;
+	top: 50%;
+}
