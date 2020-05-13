@@ -59,8 +59,8 @@ class Materials extends Controller
             'section_site'          => 'Resoluções',
             'assets'                => DIR['ASSETS'],
             'date'                  => SITE['DATE']
-            # TODO Implements access to database
-            # TODO Implements View to vizualization resolution of question
+            # TODO Implementar acesso ao banco de dados mc_resolutions_questions
+            # TODO Implementar View para vizualizar resolução de questões
         ]);
     }
 }
