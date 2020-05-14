@@ -17,7 +17,7 @@ class Resolutions extends Model
 
     public function getAllResolutionsDisciplines()
     {
-        $sql = "SELECT `discipline`, `name_normal` FROM `mc_disciplines`";
+        $sql = "SELECT `discipline`, `name_normal`, `number_questions` FROM `mc_disciplines`";
         $stmt = $this->pdo->query($sql);
         $resolutionsDisciplines = $stmt->fetchAll(\PDO::FETCH_OBJ);
 
