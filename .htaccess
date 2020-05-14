@@ -3,6 +3,7 @@ RewriteBase /mundo_comentado/
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
 RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
 RewriteRule ^ %1 [L,NE,R=302]
 RewriteRule ^((?!public/).*)$ public/index.php?route=/$1 [L,NC]
