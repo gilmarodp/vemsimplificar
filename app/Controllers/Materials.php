@@ -58,7 +58,10 @@ class Materials extends Controller
             'name_site'             => SITE['NAME'],
             'section_site'          => 'Resoluções',
             'assets'                => DIR['ASSETS'],
-            'date'                  => SITE['DATE']
+            'date'                  => SITE['DATE'],
+            'year'                  => $data['year'],
+            'discipline'            => $data['discipline'],
+            'number_question'       => $data['number_question']
             # TODO Implementar acesso ao banco de dados mc_resolutions_questions
             # TODO Implementar View para vizualizar resolução de questões
         ]);
