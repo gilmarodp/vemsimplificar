@@ -3,4 +3,6 @@
 /app/Config.php                         line [29:33]
 /app/Views/user/layout.html             line 1
 /app/Views/admin/layout.html            line 1
-/public/assets/js/script.js             line [01:09]
+/app/Views/admin/login/layout.html      line 1
+/app/Views/admin/layout.html            line 1
+/public/assets/js/script.js             line 1
