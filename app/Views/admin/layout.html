@@ -1,0 +1,61 @@
+{% set url_base_admin = "http://192.168.0.199/mundo_comentado/admin/" %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ name_site }} - {{ section_site }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ assets }}css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{ assets }}css/style.admin.css">
+    <link rel="stylesheet" type="text/css" href="{{ assets }}css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ assets }}fonts/fontawesome/css/all.css">
+</head>
+<body>
+    <div class="row">
+
+        <div class="col-sm-3 left-panel">
+            <nav class="navbar  navbar-dark bg-dark nav-menu flex-column">
+                <a class="navbar-brand" href="{{ url_base_admin }}home">{{ section_site | upper }}</a>
+                <a class="navbar-brand" href="{{ url_base_admin }}home">{{ name_site | upper }}</a>
+                  <ul class="navbar-nav m1-auto flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_base_admin }}adicionar-resolucao">
+                            <i class="fas fa-pencil-alt"></i> Adicionar Resolução
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_base_admin }}editar-resolucao">
+                            <i class="fas fa-edit"></i> Editar Resolução
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_base_admin }}adicionar-post">
+                            <i class="fas fa-plus-circle"></i> Adicionar post
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_base_admin }}editar-post">
+                            <i class="far fa-edit"></i> Editar post
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_base_admin }}meus-dados">
+                            <i class="fas fa-address-card"></i> Meus Dados
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_base_admin }}sair">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </li>
+                  </ul>
+              </nav>
+        </div>
+
+        <div class="col-sm-9 content-panel">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

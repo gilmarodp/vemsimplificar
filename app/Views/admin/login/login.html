@@ -1,0 +1,34 @@
+{% extends 'admin/login/layout.html' %}
+
+{% block form_login %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ name_site }} - {{ section_site }}</title>
+    <link rel="stylesheet" href="{{ assets }}css/bootstrap.css">
+    <link rel="stylesheet" href="{{ assets }}css/style.admin.css">
+    <script src="{{ assets }}js/jquery-3.2.1.slim.min.js"></script>
+    <script src="{{ assets }}js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="login-form">
+        <form action="{{ url_base_admin }}validate" method="post">
+            <h5 class="text-center">{{ name_site }}</h5>
+            <h5 class="text-center">Login</h5>
+            <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Seu e-mail" required="required">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Sua senha" required="required">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-block">Login</button>
+            </div>     
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}
