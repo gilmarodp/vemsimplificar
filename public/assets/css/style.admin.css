@@ -32,6 +32,10 @@
     width: 35vh;
 }
 
+.content-panel {
+    background-color: #fff;
+}
+
 .left-panel {
     background-color: var(--green);
     min-height: 100vh;
