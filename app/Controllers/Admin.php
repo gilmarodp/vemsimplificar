@@ -6,10 +6,21 @@ use \App\Core\Controller;
 
 class Admin extends Controller
 {
+
+    private $model;
+
     public function __construct () {
         parent::__construct();
         \session_start();
+        $this->model = new \App\Models\Admin;
     }
+
+    private function isLogged(){
+        if (!isset($_SESSION) || $_SESSION['isLogged'] !== true) {
+            \header('Location: ' . URLPAGE . 'admin');
+        }
+    }
+
     public function login()
     {
         echo $this->twig->render('admin/login/login.html', [
@@ -41,26 +52,56 @@ class Admin extends Controller
         
     public function home()
     {
-        if (!isset($_SESSION) || $_SESSION['isLogged'] !== true) {
-            \header('Location: ' . URLPAGE . 'admin');
-        }
-
+        $this->isLogged();
         echo $this->twig->render('admin/dashboard/home.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS']
         ]);
+        // var_dump($_SESSION);
     }
 
     public function addResolution(){
+        $this->isLogged();
         echo $this->twig->render('admin/dashboard/addResolution.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
-            'assets'                    => DIR['ASSETS']
+            'assets'                    => DIR['ASSETS'],
+            'admin'                     => ['firstName' => $_SESSION['firstName'],
+                                            'lastName' => $_SESSION['lastName']],
+            'years'                     => $this->model->getAllYears(),
+            'disciplines'               => $this->model->getAllDisciplines()
         ]);
     }
 
+    public function sendResolution()
+    {
+        $this->isLogged();
+        if (
+            isset($_POST['author']) && !empty($_POST['author']) &&
+            isset($_POST['exam_year']) && !empty($_POST['exam_year']) &&
+            isset($_POST['discipline']) && !empty($_POST['discipline']) &&
+            isset($_POST['number_question']) && !empty($_POST['number_question']) &&
+            isset($_POST['content_question']) && !empty($_POST['content_question']) &&
+            isset($_POST['resolution_question']) && !empty($_POST['resolution_question'])
+        ) {
+            $dataResolution = [
+                'author'                => $_POST['author'],
+                'exam_year'             => $_POST['exam_year'],
+                'discipline'            => $_POST['discipline'],
+                'number_question'       => $_POST['number_question'],
+                'content_question'      => $_POST['content_question'],
+                'resolution_question'   => $_POST['resolution_question'],
+                'date_resolution'       => \date('Y-m-d H:i:s')
+            ];
+        } else {\header('Location: ' . URLPAGE . 'admin/home');}
+
+        $this->model->setResolutionQuestion($dataResolution);
+        \header('Location: ' . URLPAGE . 'admin/adicionar-resolucao');
+    }
+
     public function editResolution(){
+        $this->isLogged();
         echo $this->twig->render('admin/dashboard/editResolution.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
@@ -69,6 +110,7 @@ class Admin extends Controller
     }
 
     public function addPost(){
+        $this->isLogged();
         echo $this->twig->render('admin/dashboard/addPost.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
@@ -77,6 +119,7 @@ class Admin extends Controller
     }
 
     public function editPost(){
+        $this->isLogged();
         echo $this->twig->render('admin/dashboard/editPost.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
@@ -85,6 +128,7 @@ class Admin extends Controller
     }
 
     public function viewMyData(){
+        $this->isLogged();
         echo $this->twig->render('admin/dashboard/viewMyData.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',

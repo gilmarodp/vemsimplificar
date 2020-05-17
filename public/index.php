@@ -45,15 +45,21 @@ $router->get("/", "User:about");
  * [Admins]
  */
 $router->group("admin");
-$router->get("/",                       "Admin:login");
-$router->post("/validate",              "Admin:validateAdminLogin");
-$router->get("/home",                   "Admin:home");
-$router->get("/adicionar-resolucao",    "Admin:addResolution");
-$router->get("/editar-resolucao",       "Admin:editResolution");
-$router->get("/adicionar-post",         "Admin:addPost");
-$router->get("/editar-post",            "Admin:editPost");
-$router->get("/meus-dados",             "Admin:viewMyData");
-$router->get("/sair",                   "Admin:logout");
+$router->get("/",                               "Admin:login");
+$router->post("/validate",                      "Admin:validateAdminLogin");
+$router->get("/home",                           "Admin:home");
+
+$router->get("/adicionar-resolucao",            "Admin:addResolution");
+$router->post("/adicionar-resolucao/enviar",    "Admin:sendResolution");
+
+$router->get("/editar-resolucao",               "Admin:editResolution");
+
+$router->get("/adicionar-post",                 "Admin:addPost");
+
+$router->get("/editar-post",                    "Admin:editPost");
+
+$router->get("/meus-dados",                     "Admin:viewMyData");
+$router->get("/sair",                           "Admin:logout");
 
 /**
  * [Erros]
