@@ -23,4 +23,17 @@ class Resolutions extends Model
 
         return $resolutionsDisciplines;
     }
+
+    public function getAllResolutionsQuestions(string $exam_year, string $discipline_id, string $number_question)
+    {
+        $sql = "SELECT * FROM `mc_resolutions_questions` WHERE `exam_year` = :exam_year AND `discipline` = :discipline_id AND `number_question` = :number_question";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':exam_year', $exam_year, \PDO::PARAM_STR); 
+        $stmt->bindParam(':discipline_id', $discipline_id, \PDO::PARAM_STR); 
+        $stmt->bindParam(':number_question', $number_question, \PDO::PARAM_STR); 
+        $stmt->execute();
+        $resolution = $stmt->fetch(\PDO::FETCH_OBJ);
+
+        return $resolution;
+    }
 }

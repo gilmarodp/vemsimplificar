@@ -90,8 +90,8 @@ class Admin extends Controller
                 'exam_year'             => $_POST['exam_year'],
                 'discipline'            => $_POST['discipline'],
                 'number_question'       => $_POST['number_question'],
-                'content_question'      => $_POST['content_question'],
-                'resolution_question'   => $_POST['resolution_question'],
+                'content_question'      => \strip_tags($_POST['content_question']),
+                'resolution_question'   => \strip_tags($_POST['resolution_question']),
                 'date_resolution'       => \date('Y-m-d H:i:s')
             ];
         } else {\header('Location: ' . URLPAGE . 'admin/home');}

@@ -38,3 +38,13 @@ define('SITE', [
 	'NAME'		=> 'Mundo Comentado',
 	'DATE'		=> date('Y')
 ]);
+
+define('DISCIPLINE_ID', [
+	'portugues'		=> '1',
+	'geografia'		=> '2',
+	'historia'		=> '3',
+	'biologia'		=> '4',
+	'fisica'		=> '5',
+	'matematica'	=> '6',
+	'quimica'		=> '7'
+]);

@@ -5,9 +5,13 @@
 	<h1>RESOLUÇÃO</h1>
 	<p><strong>Questão:</strong> {{ year }}/{{ discipline }}/{{ number_question }}º</p>
 
+	<p><strong>Autor: </strong>{{ resolution.author }}</p>
+	<p><strong>Publicação de: </strong><i>{{ resolution.date_resolution }}</i></p>
+
 	<h6>Enunciado:</h6>
-	<p id="enunciado"></p>
+	<p>{{ resolution.content_question }}</p>
 
 	<h6>Resolução:</h6>
+	<p>{{ resolution.resolution_question }}</p>
 
 {% endblock %}
