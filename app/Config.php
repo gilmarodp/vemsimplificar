@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Pasta Interna
-$folderInternal = "mundo_comentado/";
+$folderInternal = "vem_simplificar/";
 
 // Endereços importantes
 define('URLPAGE', "http://{$_SERVER['HTTP_HOST']}/{$folderInternal}");
@@ -35,8 +35,18 @@ define('DB', [
 
 // Informações do site
 define('SITE', [
-	'NAME'		=> 'Mundo Comentado',
+	'NAME'		=> 'Vem Simplificar',
 	'DATE'		=> date('Y')
+]);
+
+define('DISCIPLINE_NAME', [
+	'portugues'		=> 'Português',
+	'geografia'		=> 'Geografia',
+	'historia'		=> 'História',
+	'biologia'		=> 'Biologia',
+	'fisica'		=> 'Física',
+	'matematica'	=> 'Matemática',
+	'quimica'		=> 'Química'
 ]);
 
 define('DISCIPLINE_ID', [

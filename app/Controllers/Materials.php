@@ -60,7 +60,7 @@ class Materials extends Controller
             'assets'                => DIR['ASSETS'],
             'date'                  => SITE['DATE'],
             'year'                  => $data['year'],
-            'discipline'            => $data['discipline'],
+            'discipline'            => DISCIPLINE_NAME[$data['discipline']],
             'number_question'       => $data['number_question'],
             'resolution'            => (new Resolutions)->getAllResolutionsQuestions(
                 $data['year'],

@@ -3,15 +3,29 @@
 {% block content %}
 
 	<h1>RESOLUÇÃO</h1>
-	<p><strong>Questão:</strong> {{ year }}/{{ discipline }}/{{ number_question }}º</p>
+	<p><strong>Disciplina:</strong> {{ discipline }} (<strong>{{ year }}</strong>)</p>
 
 	<p><strong>Autor: </strong>{{ resolution.author }}</p>
 	<p><strong>Publicação de: </strong><i>{{ resolution.date_resolution }}</i></p>
 
 	<h6>Enunciado:</h6>
-	<p>{{ resolution.content_question }}</p>
+	<p><strong>{{ number_question }}º)</strong> {{ resolution.content_question }}</p>
 
 	<h6>Resolução:</h6>
 	<p>{{ resolution.resolution_question }}</p>
 
 {% endblock %}
+
+{% block mathjax_script %}
+	<!-- MathJax Script -->
+	<script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endblock %}	
