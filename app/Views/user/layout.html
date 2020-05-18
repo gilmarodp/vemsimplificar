@@ -1,10 +1,10 @@
-{% set url_base_user = "http://192.168.0.199/mundo_comentado/" %}
-
+{% set url_base_user = "http://192.168.0.199/vem_simplificar/" %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Plataforma de estudos com provas e resoluções comentadas. Resoluções construidas pelo grupo Vem Simplificar formado por um grupo de alunos do IFCE.">
     <title>{{ name_site }} - {{ section_site }}</title>
     <link rel="stylesheet" type="text/css" href="{{ assets }}css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="{{ assets }}css/style.css">
@@ -62,17 +62,7 @@
     <script src="{{ assets }}js/jquery-3.2.1.slim.min.js"></script>
     <script src="{{ assets}}js/popper.min.js"></script>
     <script src="{{ assets }}js/bootstrap.min.js"></script>
-    
-    <!-- MathJax Script -->
-    <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
-      }
-    };
-    </script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+    {% block mathjax_script %}{% endblock %}
 </body>
 </html>
