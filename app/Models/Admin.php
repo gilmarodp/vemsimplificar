@@ -6,6 +6,17 @@ use \App\Core\Model;
 
 class Admin extends Model
 {
+
+
+
+    // ===================================================================================
+    // ===================================================================================
+    // =============================== LOGIN  ============================================
+    // ===================================================================================
+    // ===================================================================================
+
+
+
     private function saveDataSession(string $firstName, string $lastName)
     {
         if (isset($firstName) && !empty($firstName) && isset($lastName) && !empty($lastName)) {
@@ -26,11 +37,20 @@ class Admin extends Model
             $data = $stmt->fetch(\PDO::FETCH_ASSOC);
             $this->saveDataSession($data['first_name'], $data['last_name']);
             return true;
-        } else { # fazer funcão que retorna dados do Administrador e armazena nas "$_SESSION"
-                 # saveDataSession
+        } else {
             return false;
         }
     }
+
+
+
+    // ===================================================================================
+    // ===================================================================================
+    // =============================== RESOLUTIONS =======================================
+    // ===================================================================================
+    // ===================================================================================
+
+
 
     public function getAllYears ()
     {
@@ -69,5 +89,42 @@ class Admin extends Model
         $stmt->bindParam(':date_resolution', $dataResolution['date_resolution']);
 
         $stmt->execute();
+    }
+
+    public function setResolutionQuestionEdited (array $dataResolution)
+    {
+        $sql = "UPDATE `mc_resolutions_questions` SET
+        `content_question` = :content_question, `resolution_question` = :resolution_question, `date_resolution` = :date_resolution
+        WHERE
+        `author` = :author AND `exam_year` = :exam_year AND `discipline` = :discipline AND `number_question` = :number_question";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':content_question', $dataResolution['content_question'], \PDO::PARAM_STR);
+        $stmt->bindParam(':resolution_question', $dataResolution['resolution_question'], \PDO::PARAM_STR);
+        $stmt->bindParam(':date_resolution', $dataResolution['date_resolution']);
+        $stmt->bindParam(':author', $dataResolution['author'], \PDO::PARAM_STR);
+        $stmt->bindParam(':exam_year', $dataResolution['exam_year'], \PDO::PARAM_STR);
+        $stmt->bindParam(':discipline', $dataResolution['discipline'], \PDO::PARAM_STR);
+        $stmt->bindParam(':number_question', $dataResolution['number_question'], \PDO::PARAM_STR);
+
+        $stmt->execute();
+    }
+
+    public function getResolutionQuestion (array $dataResolution)
+    {
+        $sql = "SELECT `content_question`, `resolution_question` FROM `mc_resolutions_questions`
+        WHERE
+        `author` = :author AND `exam_year` = :exam_year AND `discipline` = :discipline AND `number_question` = :number_question";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':author', $dataResolution['author'], \PDO::PARAM_STR);
+        $stmt->bindParam(':exam_year', $dataResolution['exam_year'], \PDO::PARAM_STR);
+        $stmt->bindParam(':discipline', $dataResolution['discipline'], \PDO::PARAM_STR);
+        $stmt->bindParam(':number_question', $dataResolution['number_question'], \PDO::PARAM_STR);
+        $stmt->execute();
+
+        $resolutionQuestion = $stmt->fetch(\PDO::FETCH_OBJ);
+
+        return $resolutionQuestion;
     }
 }

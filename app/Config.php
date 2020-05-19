@@ -58,3 +58,32 @@ define('DISCIPLINE_ID', [
 	'matematica'	=> '6',
 	'quimica'		=> '7'
 ]);
+define('ID_DISCIPLINE', [
+	'1'		=> 'portugues',
+	'2'		=> 'geografia',
+	'3'		=> 'historia',
+	'4'		=> 'biologia',
+	'5'		=> 'fisica',
+	'6' 	=> 'matematica',
+	'7'		=> 'quimica'
+]);
+
+define('ID_DISCIPLINE_NAME', [
+	'1'		=> 'Português',
+	'2'		=> 'Geografia',
+	'3'		=> 'História',
+	'4'		=> 'Biologia',
+	'5'		=> 'Física',
+	'6'		=> 'Matemática',
+	'7'		=> 'Química'
+]);
+
+define('NAME_DISCIPLINE_ID', [
+	'Português'			=> '1',
+	'Geografia'			=> '2',
+	'História'			=> '3',
+	'Biologia'			=> '4',
+	'Física'			=> '5',
+	'Matemática'		=> '6',
+	'Química'			=> '7'
+]);

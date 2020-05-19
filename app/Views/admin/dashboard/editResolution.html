@@ -1,5 +1,113 @@
 {% extends 'admin/layout.html' %}
 
 {% block content %}
-    <h1>Editar Resolução</h1>
+
+            {% if (resolution.content_question | length == 0) or (resolution.resolution_question | length == 0) %}
+            <form action="{{ url_base_admin }}{{ action }}" method="POST">
+            <fieldset>
+            <legend><h2>Editar Resolução</h2></legend>
+            
+            <div class="form-group row">
+                <label for="staticAuthor" class="col-sm-2 col-form-label">Autor:</label>
+                <div class="col-sm-10">
+                  <input type="text" name="author" readonly="" class="form-control-plaintext" id="staticAuthor" value="{{ admin.firstName }} {{ admin.lastName }}">
+                </div>
+              </div>
+
+            <div class="form-group">
+                <label for="exam_year">Ano da Prova</label>
+                <select name="exam_year" class="form-control" id="exam_year">
+                    {% for year in years %}
+                    <option value="{{ year.year }}">{{ year.year }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="discipline">Disciplina</label>
+                <select name="discipline" class="form-control" id="discipline">
+                    {% for discipline in disciplines %}
+                    <option value="{{ discipline.id }}">{{ discipline.discipline }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="number_question">Número da Questão</label>
+                <input type="number" name="number_question" class="form-control" id="number_question">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary form-control" value="Editar Questão">
+            </div>
+
+            </fieldset>
+            </form>
+            {% endif %}
+
+
+
+
+
+
+
+            {% if (resolution.content_question | length > 0) or (resolution.resolution_question | length > 0) %}
+            <form action="{{ url_base_admin }}{{ action }}" method="POST">
+            <fieldset>
+            <legend><h2>Editar Resolução</h2></legend>
+            
+            <div class="form-group row">
+                <label for="staticAuthor" class="col-sm-2 col-form-label">Autor:</label>
+                <div class="col-sm-10">
+                  <input type="text" name="author" readonly="" class="form-control-plaintext" id="staticAuthor" value="{{ admin }}">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="exam_year" class="col-sm-2 col-form-label">Ano:</label>
+                <div class="col-sm-10">
+                  <input type="text" name="exam_year" readonly="" class="form-control-plaintext" id="exam_year" value="{{ exam_year }}">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="discipline" class="col-sm-2 col-form-label">Disciplina:</label>
+                <div class="col-sm-10">
+                  <input type="text" name="discipline" readonly="" class="form-control-plaintext" id="discipline" value="{{ discipline }}">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="number_question" class="col-sm-2 col-form-label">Número da Questão:</label>
+                <div class="col-sm-10">
+                  <input type="text" name="number_question" readonly="" class="form-control-plaintext" id="number_question" value="{{ number_question }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="content_question">Enunciado</label>
+                <textarea name="content_question" class="form-control" id="content_question" rows="15">
+                    {{ resolution.content_question }}
+                </textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="resolution_question">Resolução</label>
+                <textarea name="resolution_question" class="form-control" id="resolution_question" rows="15">
+                    {{ resolution.resolution_question }}
+                </textarea>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-success form-control" value="Enviar Resolução">
+                <br><br>
+            </div>
+            </fieldset>
+            </form>
+            {% endif %}
+
 {% endblock %}

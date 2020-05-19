@@ -21,6 +21,14 @@ class Admin extends Controller
         }
     }
 
+
+    // ===================================================================================
+    // ===================================================================================
+    // =============================== LOGIN =============================================
+    // ===================================================================================
+    // ===================================================================================
+
+
     public function login()
     {
         echo $this->twig->render('admin/login/login.html', [
@@ -49,7 +57,18 @@ class Admin extends Controller
             \header('Location: ' . URLPAGE . 'admin');
         }
     }
-        
+
+    
+
+    // ===================================================================================
+    // ===================================================================================
+    // =============================== DASHBOARD =========================================
+    // ===================================================================================
+    // ===================================================================================
+
+
+
+
     public function home()
     {
         $this->isLogged();
@@ -58,8 +77,14 @@ class Admin extends Controller
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS']
         ]);
-        // var_dump($_SESSION);
     }
+
+
+    // ===================================================================================
+    // ===================================================================================
+    // =============================== RESOLUTIONS =======================================
+    // ===================================================================================
+    // ===================================================================================
 
     public function addResolution(){
         $this->isLogged();
@@ -90,8 +115,8 @@ class Admin extends Controller
                 'exam_year'             => $_POST['exam_year'],
                 'discipline'            => $_POST['discipline'],
                 'number_question'       => $_POST['number_question'],
-                'content_question'      => \strip_tags($_POST['content_question']),
-                'resolution_question'   => \strip_tags($_POST['resolution_question']),
+                'content_question'      => $_POST['content_question'],
+                'resolution_question'   => $_POST['resolution_question'],
                 'date_resolution'       => \date('Y-m-d H:i:s')
             ];
         } else {\header('Location: ' . URLPAGE . 'admin/home');}
@@ -102,12 +127,78 @@ class Admin extends Controller
 
     public function editResolution(){
         $this->isLogged();
-        echo $this->twig->render('admin/dashboard/editResolution.html', [
-            'name_site'                 => SITE['NAME'],
-            'section_site'              => 'Dashboard',
-            'assets'                    => DIR['ASSETS']
-        ]);
+        if (
+            isset($_POST['author']) && !empty($_POST['author']) &&
+            isset($_POST['exam_year']) && !empty($_POST['exam_year']) &&
+            isset($_POST['discipline']) && !empty($_POST['discipline']) &&
+            isset($_POST['number_question']) && !empty($_POST['number_question'])
+        ) {
+            $dataResolution = [
+                'author'                => $_POST['author'],
+                'exam_year'             => $_POST['exam_year'],
+                'discipline'            => $_POST['discipline'],
+                'number_question'       => (string) $_POST['number_question']
+            ];
+            echo $this->twig->render('admin/dashboard/editResolution.html', [
+                'name_site'                 => SITE['NAME'],
+                'section_site'              => 'Dashboard',
+                'assets'                    => DIR['ASSETS'],
+                'action'                    => 'editar-resolucao/enviar',
+                'admin'                     => $_POST['author'],
+                'exam_year'                 => $_POST['exam_year'],
+                'discipline'                => ID_DISCIPLINE_NAME[$_POST['discipline']],
+                'number_question'           => $_POST['number_question'],
+                'resolution'                => $this->model->getResolutionQuestion($dataResolution)
+            ]);
+        } else {
+            echo $this->twig->render('admin/dashboard/editResolution.html', [
+                'name_site'                 => SITE['NAME'],
+                'section_site'              => 'Dashboard',
+                'assets'                    => DIR['ASSETS'],
+                'action'                    => 'editar-resolucao',
+                'admin'                     => ['firstName' => $_SESSION['firstName'],
+                                                'lastName' => $_SESSION['lastName']],
+                'years'                     => $this->model->getAllYears(),
+                'disciplines'               => $this->model->getAllDisciplines()
+            ]);
+        }
     }
+
+    public function sendResolutionEdited()
+    {
+        $this->isLogged();
+        if (
+            isset($_POST['author']) && !empty($_POST['author']) &&
+            isset($_POST['exam_year']) && !empty($_POST['exam_year']) &&
+            isset($_POST['discipline']) && !empty($_POST['discipline']) &&
+            isset($_POST['number_question']) && !empty($_POST['number_question']) &&
+            isset($_POST['content_question']) && !empty($_POST['content_question']) &&
+            isset($_POST['resolution_question']) && !empty($_POST['resolution_question'])
+        ) {
+            $dataResolution = [
+                'author'                => $_POST['author'],
+                'exam_year'             => $_POST['exam_year'],
+                'discipline'            => NAME_DISCIPLINE_ID[$_POST['discipline']],
+                'number_question'       => $_POST['number_question'],
+                'content_question'      => $_POST['content_question'],
+                'resolution_question'   => $_POST['resolution_question'],
+                'date_resolution'       => \date('Y-m-d H:i:s')
+            ];
+        } else {\header('Location: ' . URLPAGE . 'admin/home');}
+
+        $this->model->setResolutionQuestionEdited($dataResolution);
+        \header('Location: ' . URLPAGE . 'admin/editar-resolucao');
+    }
+
+
+
+
+    // ===================================================================================
+    // ===================================================================================
+    // =============================== POSTS =============================================
+    // ===================================================================================
+    // ===================================================================================
+
 
     public function addPost(){
         $this->isLogged();

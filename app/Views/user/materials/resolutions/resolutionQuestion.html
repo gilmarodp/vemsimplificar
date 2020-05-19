@@ -9,10 +9,10 @@
 	<p><strong>Publicação de: </strong><i>{{ resolution.date_resolution }}</i></p>
 
 	<h6>Enunciado:</h6>
-	<p><strong>{{ number_question }}º)</strong> {{ resolution.content_question }}</p>
+	<strong style="float: left;">{{ number_question }}º) &nbsp;</strong>{{ resolution.content_question | raw }}
 
 	<h6>Resolução:</h6>
-	<p>{{ resolution.resolution_question }}</p>
+	{{ resolution.resolution_question | raw }}
 
 {% endblock %}
 
@@ -20,6 +20,11 @@
 	<!-- MathJax Script -->
 	<script>
     MathJax = {
+	  options: {
+		  renderActions: {
+			  addMenu: [0, '', '']
+		  }
+	  },
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
         displayMath: [['$$', '$$'], ['\\[', '\\]']]

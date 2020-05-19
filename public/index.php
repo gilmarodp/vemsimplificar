@@ -53,10 +53,15 @@ $router->get("/adicionar-resolucao",            "Admin:addResolution");
 $router->post("/adicionar-resolucao/enviar",    "Admin:sendResolution");
 
 $router->get("/editar-resolucao",               "Admin:editResolution");
+$router->post("/editar-resolucao",              "Admin:editResolution");
+$router->post("/editar-resolucao/enviar",       "Admin:sendResolutionEdited");
 
 $router->get("/adicionar-post",                 "Admin:addPost");
+$router->post("/adicionar-post",                "Admin:sendPost");
 
 $router->get("/editar-post",                    "Admin:editPost");
+$router->post("/editar-post",                   "Admin:editPost");
+$router->post("/editar-post/enviar",            "Admin:sendPostEdited");
 
 $router->get("/meus-dados",                     "Admin:viewMyData");
 $router->get("/sair",                           "Admin:logout");

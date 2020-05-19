@@ -33,8 +33,6 @@ class Resolutions extends Model
         $stmt->bindParam(':number_question', $number_question, \PDO::PARAM_STR); 
         $stmt->execute();
         $resolution = $stmt->fetch(\PDO::FETCH_OBJ);
-        $resolution->content_question = \html_entity_decode($resolution->content_question);
-        $resolution->resolution_question = \html_entity_decode($resolution->resolution_question);
 
         return $resolution;
     }
