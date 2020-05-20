@@ -27,7 +27,7 @@ class Admin extends Model
 
     public function doValidateLogin(string $email, string $password)
     {
-        $sql = "SELECT * FROM mc_admins WHERE `email` = :email AND `password` = :password_login";
+        $sql = "SELECT * FROM " . PREFIX_DB . "admins WHERE `email` = :email AND `password` = :password_login";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':email', $email, \PDO::PARAM_STR);
         $stmt->bindParam(':password_login', $password, \PDO::PARAM_STR);
@@ -64,7 +64,7 @@ class Admin extends Model
 
     public function getAllDisciplines ()
     {
-        $sql = "SELECT `id`, `discipline` FROM `mc_disciplines`";
+        $sql = "SELECT `id`, `discipline` FROM " . PREFIX_DB . "disciplines";
         $stmt = $this->pdo->query($sql);
         $stmt->execute();
         $disciplines = $stmt->fetchAll(\PDO::FETCH_OBJ);
@@ -74,7 +74,7 @@ class Admin extends Model
 
     public function setResolutionQuestion (array $dataResolution)
     {
-        $sql = "INSERT INTO `mc_resolutions_questions`
+        $sql = "INSERT INTO " . PREFIX_DB . "resolutions_questions
         (`author`, `exam_year`, `discipline`, `number_question`, `content_question`, `resolution_question`, `date_resolution`)
         VALUES
         (:author, :exam_year, :discipline, :number_question, :content_question, :resolution_question, :date_resolution)";
@@ -93,7 +93,7 @@ class Admin extends Model
 
     public function setResolutionQuestionEdited (array $dataResolution)
     {
-        $sql = "UPDATE `mc_resolutions_questions` SET
+        $sql = "UPDATE " . PREFIX_DB . "resolutions_questions SET
         `content_question` = :content_question, `resolution_question` = :resolution_question, `date_resolution` = :date_resolution
         WHERE
         `author` = :author AND `exam_year` = :exam_year AND `discipline` = :discipline AND `number_question` = :number_question";
@@ -112,7 +112,7 @@ class Admin extends Model
 
     public function getResolutionQuestion (array $dataResolution)
     {
-        $sql = "SELECT `content_question`, `resolution_question` FROM `mc_resolutions_questions`
+        $sql = "SELECT `content_question`, `resolution_question` FROM " . PREFIX_DB . "resolutions_questions
         WHERE
         `author` = :author AND `exam_year` = :exam_year AND `discipline` = :discipline AND `number_question` = :number_question";
         

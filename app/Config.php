@@ -2,14 +2,14 @@
 
 require __DIR__ . '/Helper.php';
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+ini_set('display_errors', 0);
+error_reporting(0);
 
 // Pasta Interna
-$folderInternal = "vem_simplificar/";
+$folderInternal = "";
 
 // Endereços importantes
-define('URLPAGE', "http://{$_SERVER['HTTP_HOST']}/{$folderInternal}");
+define('URLPAGE', "https://{$_SERVER['HTTP_HOST']}/{$folderInternal}");
 if (substr($_SERVER['DOCUMENT_ROOT'], -1) == '/') {
 	define('DIRPAGE', "{$_SERVER['DOCUMENT_ROOT']}{$folderInternal}");    
 } else {
@@ -25,12 +25,14 @@ define('DIR', [
 ]);
 
 // Configurações Banco de Dados
+define('PREFIX_DB', 'vemsim57_');
 define('DB', [
 	'TYPE' 		=> 'mysql',
 	'HOST' 		=> 'localhost',
-	'NAME' 		=> 'mc_database',
-	'USER' 		=> 'root',
-	'PASS' 		=> 'root'
+	'NAME' 		=> PREFIX_DB . 'database',
+	'CHARSET'	=> 'utf8',
+	'USER' 		=> PREFIX_DB . 'admin',
+	'PASS' 		=> 'N#VihKDakEKS'
 ]);
 
 // Informações do site
