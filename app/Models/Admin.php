@@ -54,7 +54,7 @@ class Admin extends Model
 
     public function getAllYears ()
     {
-        $sql = "SELECT `year` FROM mc_exams";
+        $sql = "SELECT `year` FROM " . PREFIX_DB . "exams";
         $stmt = $this->pdo->query($sql);
         $stmt->execute();
         $years = $stmt->fetchAll(\PDO::FETCH_OBJ);
