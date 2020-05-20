@@ -35,7 +35,6 @@ define('DB', [
 	'PASS' 		=> 'N#VihKDakEKS'
 ]);
 
-
 // Informações do site
 define('SITE', [
 	'NAME'		=> 'Vem Simplificar',
