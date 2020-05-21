@@ -10,14 +10,10 @@
 
 	<h6>Enunciado:</h6>
 	<strong style="float: left;">{{ number_question }}º) &nbsp;</strong>
-	<div id="content_question">
-		{{ resolution.content_question | raw }}
-	</div>
+	<div id="content_question"> {{ resolution.content_question | raw }} </div>
 
 	<h6>Resolução:</h6>
-	<div id="resolution_question">
-		{{ resolution.resolution_question | raw }}
-	</div>
+	<div id="resolution_question">{{ resolution.resolution_question | raw }}</div>
 
 {% endblock %}
 
