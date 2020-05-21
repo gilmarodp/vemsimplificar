@@ -91,7 +91,7 @@ class Materials extends Controller
             'date'                  => SITE['DATE'],
             'year'                  => $data['year'],
             'discipline'            => DISCIPLINE_NAME[$data['discipline']],
-            'number_question'       => $data['number_question'],
+            'number_question_url'       => $data['number_question'],
             'number_questions'      => (new Resolutions)->getNumberQuestions(
                 $data['year'],
                 DISCIPLINE_ID[$data['discipline']]

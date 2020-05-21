@@ -26,12 +26,12 @@ class Resolutions extends Model
 
     public function getNumberQuestions(string $exam_year, string $discipline_id)
     {
-        $sql = "SELECT ´number_question´ FROM " . PREFIX_DB . "resolutions_questions WHERE `exam_year` = :exam_year AND `discipline` = :discipline_id";
+        $sql = "SELECT * FROM " . PREFIX_DB . "resolutions_questions WHERE `exam_year` = :exam_year AND `discipline` = :discipline_id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':exam_year', $exam_year, \PDO::PARAM_STR);
         $stmt->bindParam(':discipline_id', $discipline_id, \PDO::PARAM_STR);
         $stmt->execute();
-        $numberQuestions = $stmt->fetch(\PDO::FETCH_OBJ);
+        $numberQuestions = $stmt->fetchAll(\PDO::FETCH_OBJ);
 
         var_dump($numberQuestions);
 
