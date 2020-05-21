@@ -22,7 +22,7 @@
 		<ul class="pagination">
 		  {% for number_question_pagination in number_questions %}
 		  <li class="page-item">
-			<a class="page-link" href="../{{ number_question_pagination.number_question }}">{{ number_question_pagination.number_question }}º</a>
+			<a class="page-link" href="{{ number_question_pagination.number_question }}">{{ number_question_pagination.number_question }}º</a>
 		  </li>
 		  {% endfor %}
 		</ul>
