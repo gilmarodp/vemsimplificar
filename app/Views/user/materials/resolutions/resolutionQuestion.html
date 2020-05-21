@@ -9,10 +9,23 @@
 	<p><strong>Publicação de: </strong><i>{{ resolution.date_resolution }}</i></p>
 
 	<h6>Enunciado:</h6>
-	<strong style="float: left;">{{ number_question }}º) &nbsp;</strong>{{ resolution.content_question | raw }}
+	<strong style="float: left;">{{ number_question }}º) &nbsp;</strong>
+	<div id="content_question">
+		{{ resolution.content_question | raw }}
+	</div>
 
 	<h6>Resolução:</h6>
-	{{ resolution.resolution_question | raw }}
+	<div id="resolution_question">
+		{{ resolution.resolution_question | raw }}
+	</div>
+
+{% endblock %}
+
+{% block script %}
+
+	<script type="text/javascript" src="{{ assets }}js/script.js">
+		validateQuestion();
+	</script>
 
 {% endblock %}
 
