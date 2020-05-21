@@ -50,4 +50,5 @@
 .page-link {
 	color: var(--white);
 	background-color: #FF5555;
+	border-block-color: transparent;
 }
