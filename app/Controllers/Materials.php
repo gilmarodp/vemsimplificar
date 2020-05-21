@@ -92,6 +92,10 @@ class Materials extends Controller
             'year'                  => $data['year'],
             'discipline'            => DISCIPLINE_NAME[$data['discipline']],
             'number_question'       => $data['number_question'],
+            'number_questions'      => (new Resolutions)->getNumberQuestions(
+                $data['year'],
+                DISCIPLINE_ID[$data['discipline']]
+            ),
             'resolution'            => (new Resolutions)->getAllResolutionsQuestions(
                 $data['year'],
                 DISCIPLINE_ID[$data['discipline']],

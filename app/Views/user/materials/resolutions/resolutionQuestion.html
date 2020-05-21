@@ -2,13 +2,32 @@
 
 {% block content %}
 
+		<h1>RESOLUÇÃO</h1>
+
+	{#
+		=====================================
+		============ PAGINATION =============
+		=====================================
+	#}
+
 	{#
 		=====================================
 		============ RESOLUTION =============
 		=====================================
 	#}
 	{% if (resolution.content_question != "") or (resolution.resolution_question != "")%}
-		<h1>RESOLUÇÃO</h1>
+		
+	<label for="pagination">Selecione a questão desejada</label>
+	<div>
+		<ul class="pagination">
+		  {% for number_question_pagination in number_questions %}
+		  <li class="page-item">
+			<a class="page-link" href="../{{ number_question_pagination.number_question }}">{{ number_question_pagination.number_question }}º</a>
+		  </li>
+		  {% endfor %}
+		</ul>
+	  </div>
+	
 		<p><strong>Disciplina:</strong> {{ discipline }} (<strong>{{ year }}</strong>)</p>
 
 		<p><strong>Autor: </strong>{{ resolution.author }}</p>
@@ -21,7 +40,6 @@
 		<h6>Resolução:</h6>
 		<div id="resolution_question">{{ resolution.resolution_question | raw }}</div>
 	{% else %}
-		<h1>RESOLUÇÃO</h1>
 		<p>
 			A resolução dessa questão em específica ainda não está pronta ou simplesmente
 			não existe a {{ number_question }}º questão de {{ discipline }} da prova de {{ year }}.
