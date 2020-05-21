@@ -46,3 +46,8 @@
 	left: 50%;
 	top: 50%;
 }
+
+.page-link {
+	color: var(--white);
+	background-color: #FF5555;
+}

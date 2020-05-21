@@ -33,8 +33,6 @@ class Resolutions extends Model
         $stmt->execute();
         $numberQuestions = $stmt->fetchAll(\PDO::FETCH_OBJ);
 
-        var_dump($numberQuestions);
-
         return $numberQuestions;
     }
 
