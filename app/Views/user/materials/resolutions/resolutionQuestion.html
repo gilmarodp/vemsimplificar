@@ -2,26 +2,26 @@
 
 {% block content %}
 
-	<h1>RESOLUÇÃO</h1>
-	<p><strong>Disciplina:</strong> {{ discipline }} (<strong>{{ year }}</strong>)</p>
+	{#
+		=====================================
+		============ RESOLUTION =============
+		=====================================
+	#}
+	{% if (resolution.content_question != "") or (resolution.resolution_question != "")%}
+		<h1>RESOLUÇÃO</h1>
+		<p><strong>Disciplina:</strong> {{ discipline }} (<strong>{{ year }}</strong>)</p>
 
-	<p><strong>Autor: </strong>{{ resolution.author }}</p>
-	<p><strong>Publicação de: </strong><i>{{ resolution.date_resolution }}</i></p>
+		<p><strong>Autor: </strong>{{ resolution.author }}</p>
+		<p><strong>Publicação de: </strong><i>{{ resolution.date_resolution }}</i></p>
 
-	<h6>Enunciado:</h6>
-	<strong style="float: left;">{{ number_question }}º) &nbsp;</strong>
-	<div id="content_question"> {{ resolution.content_question | raw }} </div>
+		<h6>Enunciado:</h6>
+		<strong style="float: left;">{{ number_question }}º) &nbsp;</strong>
+		<div id="content_question"> {{ resolution.content_question | raw }} </div>
 
-	<h6>Resolução:</h6>
-	<div id="resolution_question">{{ resolution.resolution_question | raw }}</div>
-
-{% endblock %}
-
-{% block scripts %}
-
-	<script>
-		validateQuestion('content_question', 'resolution_question');
-	</script>
+		<h6>Resolução:</h6>
+		<div id="resolution_question">{{ resolution.resolution_question | raw }}</div>
+	{% else %}
+		<h1>A RESOLUÇÃO DESSA QUESTÃO AINDA NÃO ESTÁ PRONTA OU ESSA QUESTÃO NÃO EXISTE</h1>
 
 {% endblock %}
 
