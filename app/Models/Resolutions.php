@@ -31,7 +31,7 @@ class Resolutions extends Model
         $stmt->bindParam(':exam_year', $exam_year, \PDO::PARAM_STR);
         $stmt->bindParam(':discipline_id', $discipline_id, \PDO::PARAM_STR);
         $stmt->execute();
-        $numberQuestions = $stmt->fetchAll(\PDO::FETCH_OBJ);
+        $numberQuestions = $stmt->fetch(\PDO::FETCH_OBJ);
 
         var_dump($numberQuestions);
 
