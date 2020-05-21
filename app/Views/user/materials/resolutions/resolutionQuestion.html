@@ -21,8 +21,12 @@
 		<h6>Resolução:</h6>
 		<div id="resolution_question">{{ resolution.resolution_question | raw }}</div>
 	{% else %}
-		<h1>A RESOLUÇÃO DESSA QUESTÃO AINDA NÃO ESTÁ PRONTA OU ESSA QUESTÃO NÃO EXISTE</h1>
-	{% endif %}
+		<h1>RESOLUÇÃO</h1>
+		<p>
+			A resolução dessa questão em específica ainda não está pronta ou simplesmente
+			não existe a {{ number_question }}º questão de {{ discipline }} da prova de {{ year }}.
+		</p>
+	{% endif %	}
 
 {% endblock %}
 
