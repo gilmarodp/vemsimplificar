@@ -10,6 +10,6 @@ function validateQuestion(id1, id2) {
 
     if (content1 === "" || content2 === "") {
         window.alert('A resolução dessa questão ainda não está pronta, se tiver dúvidas, entre em contato conosco atráves do e-mail ou atráves do Discord.');
-        location.href = URLPAGE + "/ooops/404";
+        location.href = URLPAGE + "/materiais/resolucoes/2020-1";
     }
 }
