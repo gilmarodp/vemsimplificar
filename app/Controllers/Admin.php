@@ -137,7 +137,7 @@ class Admin extends Controller
                 'author'                => $_POST['author'],
                 'exam_year'             => $_POST['exam_year'],
                 'discipline'            => $_POST['discipline'],
-                'number_question'       => (string) $_POST['number_question']
+                'number_question'       => $_POST['number_question']
             ];
             echo $this->twig->render('admin/dashboard/editResolution.html', [
                 'name_site'                 => SITE['NAME'],
