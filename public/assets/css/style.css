@@ -51,7 +51,7 @@
 .page-link {
 	color: var(--white);
 	background-color: #02B875;
-	border-bottom-color: transparent;
+	border-bottom-color: var(--white);
 }
 
 .page-link:hover {
