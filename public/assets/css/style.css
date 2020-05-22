@@ -47,8 +47,15 @@
 	top: 50%;
 }
 
+/* P A G I N A Ç Ã O */
 .page-link {
 	color: var(--white);
-	background-color: #FF5555;
+	background-color: #02B875;
+	border-block-color: transparent;
+}
+
+.page-link:hover {
+	color: #02B875;
+	background-color: var(--white);
 	border-block-color: transparent;
 }
