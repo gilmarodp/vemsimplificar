@@ -51,11 +51,11 @@
 .page-link {
 	color: var(--white);
 	background-color: #02B875;
-	border-bottom-color: var(--white);
+	border: 1px solid var(--white);
 }
 
 .page-link:hover {
 	color: #02B875;
 	background-color: var(--white);
-	border-block-color: transparent;
+	border-block-color: #02B875;
 }
