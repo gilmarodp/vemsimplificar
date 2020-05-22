@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ name_site }} - {{ section_site }}</title>
+    <link rel="shortcut icon" type="imagem/png" href="{{ assets }}img/icone64.svg">
     <link rel="stylesheet" type="text/css" href="{{ assets }}css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="{{ assets }}css/style.admin.css">
     <link rel="stylesheet" type="text/css" href="{{ assets }}css/style.css">
@@ -14,6 +15,7 @@
 
         <div class="col-sm-3 left-panel">
             <nav class="navbar  navbar-dark bg-dark nav-menu flex-column">
+                <a href="{{ url_base_admin }}home"></a><img src="{{ assets }}img/logo.svg">
                 <a class="navbar-brand" href="{{ url_base_admin }}home">{{ section_site | upper }}</a>
                 <a class="navbar-brand" href="{{ url_base_admin }}home">{{ name_site | upper }}</a>
                   <ul class="navbar-nav m1-auto flex-column">
