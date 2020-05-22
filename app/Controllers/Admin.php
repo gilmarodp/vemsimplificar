@@ -110,6 +110,7 @@ class Admin extends Controller
             isset($_POST['content_question']) && !empty($_POST['content_question']) &&
             isset($_POST['resolution_question']) && !empty($_POST['resolution_question'])
         ) {
+            var_dump($_POST['']);
             $dataResolution = [
                 'author'                => $_POST['author'],
                 'exam_year'             => $_POST['exam_year'],
