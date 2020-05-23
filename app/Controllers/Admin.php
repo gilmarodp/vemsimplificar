@@ -117,7 +117,7 @@ class Admin extends Controller
                 'number_question'       => $_POST['number_question'],
                 'content_question'      => $_POST['content_question'],
                 'resolution_question'   => $_POST['resolution_question'],
-                'date_resolution'       => \date('Y-m-d H:i:s')
+                'date_resolution'       => \date('Y-m-d')
             ];
         } else {\header('Location: ' . URLPAGE . 'admin/home');}
 
@@ -182,7 +182,7 @@ class Admin extends Controller
                 'number_question'       => $_POST['number_question'],
                 'content_question'      => $_POST['content_question'],
                 'resolution_question'   => $_POST['resolution_question'],
-                'date_resolution'       => \date('Y-m-d H:i:s')
+                'date_resolution'       => \date('Y-m-d')
             ];
         } else {\header('Location: ' . URLPAGE . 'admin/home');}
 
