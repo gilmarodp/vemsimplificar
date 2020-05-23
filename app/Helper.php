@@ -7,3 +7,10 @@ function startTwig()
 
 	return $twig;
 }
+
+function datetimeToDateConvert($date)
+{
+	$date = explode(' ', $date)[0];
+
+	return date('d/m/Y', strtotime($date));
+}
