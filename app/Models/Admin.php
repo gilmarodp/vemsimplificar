@@ -17,25 +17,26 @@ class Admin extends Model
 
 
 
-    private function saveDataSession(string $firstName, string $lastName)
+    private function saveDataSession(string $firstName, string $lastName, string $rule)
     {
         if (isset($firstName) && !empty($firstName) && isset($lastName) && !empty($lastName)) {
             $_SESSION['firstName'] = $firstName;
             $_SESSION['lastName'] = $lastName;
+            $_SESSION['rule'] = $rule;
         }
     }
 
     public function doValidateLogin(string $email, string $password)
     {
-        $sql = "SELECT * FROM " . PREFIX_DB . "admins WHERE `email` = :email AND `password` = :password_login";
+        $sql = "SELECT * FROM " . PREFIX_DB . "admins WHERE `email` = :email AND `password` = :password_login AND `active` = 1";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':email', $email, \PDO::PARAM_STR);
         $stmt->bindParam(':password_login', $password, \PDO::PARAM_STR);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            $data = $stmt->fetch(\PDO::FETCH_ASSOC);
-            $this->saveDataSession($data['first_name'], $data['last_name']);
+            $data = $stmt->fetch(\PDO::FETCH_OBJ);
+            $this->saveDataSession($data->first_name, $data->last_name, $data->rule);
             return true;
         } else {
             return false;

@@ -16,7 +16,7 @@ class Admin extends Controller
     }
 
     private function isLogged(){
-        if (!isset($_SESSION) || $_SESSION['isLogged'] !== true) {
+        if (!isset($_SESSION) || $_SESSION['isLogged'] != true) {
             \header('Location: ' . URLPAGE . 'admin');
         }
     }
@@ -220,7 +220,7 @@ class Admin extends Controller
 
     public function viewMyData(){
         $this->isLogged();
-        echo $this->twig->render('admin/dashboard/myData/viewMyData.html', [
+        echo $this->twig->render('admin/dashboard/blog/viewMyData.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS']
@@ -230,6 +230,9 @@ class Admin extends Controller
     public function logout()
     {
         $_SESSION['isLogged'] = false;
+        unset($_SESSION['firstName']);
+        unset($_SESSION['lastName']);
+        unset($_SESSION['rule']);
         \header('Location: ' . URLPAGE . 'admin');
     }
 }
