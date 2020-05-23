@@ -46,8 +46,8 @@ class Resolutions extends Model
         $stmt->execute();
         $resolution = $stmt->fetch(\PDO::FETCH_OBJ);
 
-        $resolution->date_resolution = \convertDatetimeToDate($resolution->date_resolution);
         var_dump($resolution);
+        $resolution->date_resolution = \convertDatetimeToDate($resolution->date_resolution);
         return $resolution;
     }
 }
