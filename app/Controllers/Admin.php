@@ -62,7 +62,7 @@ class Admin extends Controller
 
     // ===================================================================================
     // ===================================================================================
-    // =============================== DASHBOARD =========================================
+    // ================================== HOME ===========================================
     // ===================================================================================
     // ===================================================================================
 
@@ -88,7 +88,7 @@ class Admin extends Controller
 
     public function addResolution(){
         $this->isLogged();
-        echo $this->twig->render('admin/dashboard/addResolution.html', [
+        echo $this->twig->render('admin/dashboard/resolution/addResolution.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS'],
@@ -139,7 +139,7 @@ class Admin extends Controller
                 'discipline'            => $_POST['discipline'],
                 'number_question'       => $_POST['number_question']
             ];
-            echo $this->twig->render('admin/dashboard/editResolution.html', [
+            echo $this->twig->render('admin/dashboard/resolution/editResolution.html', [
                 'name_site'                 => SITE['NAME'],
                 'section_site'              => 'Dashboard',
                 'assets'                    => DIR['ASSETS'],
@@ -151,7 +151,7 @@ class Admin extends Controller
                 'resolution'                => $this->model->getResolutionQuestion($dataResolution)
             ]);
         } else {
-            echo $this->twig->render('admin/dashboard/editResolution.html', [
+            echo $this->twig->render('admin/dashboard/resolution/editResolution.html', [
                 'name_site'                 => SITE['NAME'],
                 'section_site'              => 'Dashboard',
                 'assets'                    => DIR['ASSETS'],
@@ -195,14 +195,14 @@ class Admin extends Controller
 
     // ===================================================================================
     // ===================================================================================
-    // =============================== POSTS =============================================
+    // ================================ BLOG =============================================
     // ===================================================================================
     // ===================================================================================
 
 
     public function addPost(){
         $this->isLogged();
-        echo $this->twig->render('admin/dashboard/addPost.html', [
+        echo $this->twig->render('admin/dashboard/blog/addPost.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS']
@@ -211,7 +211,7 @@ class Admin extends Controller
 
     public function editPost(){
         $this->isLogged();
-        echo $this->twig->render('admin/dashboard/editPost.html', [
+        echo $this->twig->render('admin/dashboard/blog/editPost.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS']
@@ -220,7 +220,7 @@ class Admin extends Controller
 
     public function viewMyData(){
         $this->isLogged();
-        echo $this->twig->render('admin/dashboard/viewMyData.html', [
+        echo $this->twig->render('admin/dashboard/myData/viewMyData.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS']
