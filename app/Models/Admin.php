@@ -17,12 +17,12 @@ class Admin extends Model
 
 
 
-    private function saveDataSession(string $firstName, string $lastName, string $rules)
+    private function saveDataSession(string $firstName, string $lastName, string $roles)
     {
         if (isset($firstName) && !empty($firstName) && isset($lastName) && !empty($lastName)) {
             $_SESSION['firstName'] = $firstName;
             $_SESSION['lastName'] = $lastName;
-            $_SESSION['rules'] = $rules;
+            $_SESSION['roles'] = $roles;
         }
     }
 
@@ -36,7 +36,7 @@ class Admin extends Model
 
         if ($stmt->rowCount() > 0) {
             $data = $stmt->fetch(\PDO::FETCH_OBJ);
-            $this->saveDataSession($data->first_name, $data->last_name, $data->rules);
+            $this->saveDataSession($data->first_name, $data->last_name, $data->roles);
             return true;
         } else {
             return false;

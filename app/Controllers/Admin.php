@@ -21,6 +21,16 @@ class Admin extends Controller
         }
     }
 
+    private function haveThisRole(string $role)
+    {
+        if (isset($_SESSION['roles']) && !empty($_SESSION['roles'])) {
+            if (strpos($_SESSION['roles'], $role))
+                return true;
+            else
+                return false;
+        } else 
+            return false;
+    }
 
     // ===================================================================================
     // ===================================================================================
@@ -78,7 +88,7 @@ class Admin extends Controller
             'assets'                    => DIR['ASSETS'],
             'admin'                     => ['firstName' => $_SESSION['firstName'],
                                             'lastName' => $_SESSION['lastName'],
-                                            'rules' => $_SESSION['rules']],
+                                            'roles' => $_SESSION['roles']],
         ]);
     }
 
@@ -91,13 +101,14 @@ class Admin extends Controller
 
     public function addResolution(){
         $this->isLogged();
+        $this->haveThisRole('reso');
         echo $this->twig->render('admin/dashboard/resolution/addResolution.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS'],
             'admin'                     => ['firstName' => $_SESSION['firstName'],
                                             'lastName' => $_SESSION['lastName'],
-                                            'rules' => $_SESSION['rules']],
+                                            'roles' => $_SESSION['roles']],
             'years'                     => $this->model->getAllYears(),
             'disciplines'               => $this->model->getAllDisciplines()
         ]);
@@ -131,6 +142,7 @@ class Admin extends Controller
 
     public function editResolution(){
         $this->isLogged();
+        $this->haveThisRole('reso');
         if (
             isset($_POST['author']) && !empty($_POST['author']) &&
             isset($_POST['exam_year']) && !empty($_POST['exam_year']) &&
@@ -149,7 +161,7 @@ class Admin extends Controller
                 'assets'                    => DIR['ASSETS'],
                 'admin'                     => ['firstName' => $_SESSION['firstName'],
                                                 'lastName' => $_SESSION['lastName'],
-                                                'rules' => $_SESSION['rules']],
+                                                'roles' => $_SESSION['roles']],
                 'action'                    => 'editar-resolucao/enviar',
                 'admin'                     => $_POST['author'],
                 'exam_year'                 => $_POST['exam_year'],
@@ -165,7 +177,7 @@ class Admin extends Controller
                 'action'                    => 'editar-resolucao',
                 'admin'                     => ['firstName' => $_SESSION['firstName'],
                                                 'lastName' => $_SESSION['lastName'],
-                                                'rules' => $_SESSION['rules']],
+                                                'roles' => $_SESSION['roles']],
                 'years'                     => $this->model->getAllYears(),
                 'disciplines'               => $this->model->getAllDisciplines()
             ]);
@@ -210,28 +222,40 @@ class Admin extends Controller
 
     public function addPost(){
         $this->isLogged();
+        $this->haveThisRole('blog');
         echo $this->twig->render('admin/dashboard/blog/addPost.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS'],
             'admin'                     => ['firstName' => $_SESSION['firstName'],
                                             'lastName' => $_SESSION['lastName'],
-                                            'rules' => $_SESSION['rules']],
+                                            'roles' => $_SESSION['roles']],
         ]);
     }
 
     public function editPost(){
         $this->isLogged();
+        $this->haveThisRole('blog');
         echo $this->twig->render('admin/dashboard/blog/editPost.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS'],
             'admin'                     => ['firstName' => $_SESSION['firstName'],
                                             'lastName' => $_SESSION['lastName'],
-                                            'rules' => $_SESSION['rules']]
+                                            'roles' => $_SESSION['roles']]
         ]);
     }
 
+
+
+
+    // ===================================================================================
+    // ===================================================================================
+    // =============================== OPTIONS ===========================================
+    // ===================================================================================
+    // ===================================================================================
+    
+    
     public function viewMyData(){
         $this->isLogged();
         echo $this->twig->render('admin/dashboard/myData/viewMyData.html', [
@@ -240,7 +264,7 @@ class Admin extends Controller
             'assets'                    => DIR['ASSETS'],
             'admin'                     => ['firstName' => $_SESSION['firstName'],
                                             'lastName' => $_SESSION['lastName'],
-                                            'rules' => $_SESSION['rules']]
+                                            'roles' => $_SESSION['roles']]
         ]);
     }
 
@@ -249,7 +273,7 @@ class Admin extends Controller
         $_SESSION['isLogged'] = false;
         unset($_SESSION['firstName']);
         unset($_SESSION['lastName']);
-        unset($_SESSION['rules']);
+        unset($_SESSION['roles']);
         \header('Location: ' . URLPAGE . 'admin');
     }
 }
