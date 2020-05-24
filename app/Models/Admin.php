@@ -19,6 +19,8 @@ class Admin extends Model
             $rolesArray = \explode(' ', $_SESSION['roles']);
             if (\in_array($role, $rolesArray)) {
                 return true;
+            } else {
+                \header('Location: ' . URLPAGE . 'admin/home');
             }
         } else {
             \header('Location: ' . URLPAGE . 'admin/home');
