@@ -162,12 +162,10 @@ class Admin extends Controller
                 'name_site'                 => SITE['NAME'],
                 'section_site'              => 'Dashboard',
                 'assets'                    => DIR['ASSETS'],
+                'action'                    => 'editar-resolucao',
                 'admin'                     => ['firstName' => $_SESSION['firstName'],
                                                 'lastName' => $_SESSION['lastName'],
                                                 'rules' => $_SESSION['rules']],
-                'action'                    => 'editar-resolucao',
-                'admin'                     => ['firstName' => $_SESSION['firstName'],
-                                                'lastName' => $_SESSION['lastName']],
                 'years'                     => $this->model->getAllYears(),
                 'disciplines'               => $this->model->getAllDisciplines()
             ]);
