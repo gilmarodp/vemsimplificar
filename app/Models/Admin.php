@@ -7,7 +7,22 @@ use \App\Core\Model;
 class Admin extends Model
 {
 
+    public function isLogged(){
+        if (!isset($_SESSION) || $_SESSION['isLogged'] != true) {
+            \header('Location: ' . URLPAGE . 'admin');
+        }
+    }
 
+    public function haveThisRole(string $role)
+    {
+        if (isset($_SESSION['roles']) && !empty($_SESSION['roles'])) {
+            if (strpos($_SESSION['roles'], $role))
+                return true;
+            else
+                \header('Location: ' . URLPAGE . 'admin/home');
+        } else 
+        \header('Location: ' . URLPAGE . 'admin/home');
+    }
 
     // ===================================================================================
     // ===================================================================================

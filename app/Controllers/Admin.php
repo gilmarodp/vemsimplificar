@@ -15,23 +15,6 @@ class Admin extends Controller
         $this->model = new \App\Models\Admin;
     }
 
-    private function isLogged(){
-        if (!isset($_SESSION) || $_SESSION['isLogged'] != true) {
-            \header('Location: ' . URLPAGE . 'admin');
-        }
-    }
-
-    private function haveThisRole(string $role)
-    {
-        if (isset($_SESSION['roles']) && !empty($_SESSION['roles'])) {
-            if (strpos($_SESSION['roles'], $role))
-                return true;
-            else
-                return false;
-        } else 
-            return false;
-    }
-
     // ===================================================================================
     // ===================================================================================
     // =============================== LOGIN =============================================
@@ -81,7 +64,7 @@ class Admin extends Controller
 
     public function home()
     {
-        $this->isLogged();
+        $this->model->isLogged();
         echo $this->twig->render('admin/dashboard/home.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
@@ -100,8 +83,8 @@ class Admin extends Controller
     // ===================================================================================
 
     public function addResolution(){
-        $this->isLogged();
-        $this->haveThisRole('reso');
+        $this->model->isLogged();
+        $this->model->haveThisRole('reso');
         echo $this->twig->render('admin/dashboard/resolution/addResolution.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
@@ -116,7 +99,7 @@ class Admin extends Controller
 
     public function sendResolution()
     {
-        $this->isLogged();
+        $this->model->isLogged();
         if (
             isset($_POST['author']) && !empty($_POST['author']) &&
             isset($_POST['exam_year']) && !empty($_POST['exam_year']) &&
@@ -141,8 +124,8 @@ class Admin extends Controller
     }
 
     public function editResolution(){
-        $this->isLogged();
-        $this->haveThisRole('reso');
+        $this->model->isLogged();
+        $this->model->haveThisRole('reso');
         if (
             isset($_POST['author']) && !empty($_POST['author']) &&
             isset($_POST['exam_year']) && !empty($_POST['exam_year']) &&
@@ -186,7 +169,7 @@ class Admin extends Controller
 
     public function sendResolutionEdited()
     {
-        $this->isLogged();
+        $this->model->isLogged();
         if (
             isset($_POST['author']) && !empty($_POST['author']) &&
             isset($_POST['exam_year']) && !empty($_POST['exam_year']) &&
@@ -221,8 +204,8 @@ class Admin extends Controller
 
 
     public function addPost(){
-        $this->isLogged();
-        $this->haveThisRole('blog');
+        $this->model->isLogged();
+        $this->model->haveThisRole('blog');
         echo $this->twig->render('admin/dashboard/blog/addPost.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
@@ -234,8 +217,8 @@ class Admin extends Controller
     }
 
     public function editPost(){
-        $this->isLogged();
-        $this->haveThisRole('blog');
+        $this->model->isLogged();
+        $this->model->haveThisRole('blog');
         echo $this->twig->render('admin/dashboard/blog/editPost.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
@@ -257,7 +240,7 @@ class Admin extends Controller
     
     
     public function viewMyData(){
-        $this->isLogged();
+        $this->model->isLogged();
         echo $this->twig->render('admin/dashboard/myData/viewMyData.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
