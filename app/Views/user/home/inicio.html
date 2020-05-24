@@ -3,5 +3,44 @@
 {% block content %}
 	
 	<h1>Início</h1>
+	<p style="text-align: justify;">
+		{{ message_of_day }}, seja bem vindo ao nosso projeto "<strong>{{ name_site }}</strong>".
+		Aqui você vai encontrar materiais de estudos totalmente gratuitos com o intuito de ajudar
+		estudantes que buscam simplificidade, resoluções de provas e a facilidade na utilização da
+		plataforma, tudo isso concentrado em um só lugar, no <a href="{{ url_base_user }}"><span class="badge badge-success">Vem Simplificar</span></a>.
+	</p>
+	<hr>
+	<h2>Como utilizar?</h2>
+	<p style="text-align: justify;">
+		A plataforma de estudos em si é bastante simples, é exatamente o que pregamos, o princípio
+		<strong>KISS</strong> (Keep It Simple, Stupid). A plataforma gira em torno dos menus na
+		extremidade direita da página.
+		<ul>
+			<li><p><strong>Início:</strong> Aqui mesmo :).</p></li>
+
+			<li>
+				<p>
+					<strong>Materiais:</strong> Conteúdo principal da plataforma, contendo provas e
+					resoluções comentadas produzidas pelos gestores de provas do "<strong>{{ name_site }}</strong>".
+				</p>
+			</li>
+
+			<li>
+				<p>
+					<strong>Contato:</strong> A segunda parte mais importante da plataforma, é lá que vocês
+					poderam ter um contato mais direto com a gente, atráves do nosso e-mail de contato ou
+					atráves do nosso servidor do Discord.
+				</p>
+			</li>
+
+			<li>
+				<p>
+					<strong>Sobre:</strong> Em sobre, vocês teram mais informações sobre o projeto, o contexto
+					em que decidimos nos dedicar a esse projeto e algumas informações sobre as pessoas responsáveis
+					pelo projeto.
+				</p>
+			</li>
+		</ul>
+	</p>
 
 {% endblock %}

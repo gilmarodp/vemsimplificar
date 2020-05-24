@@ -21,7 +21,8 @@ class User extends Controller
             'name_site'             => SITE['NAME'],
             'section_site'          => 'Início',
             'assets'                => DIR['ASSETS'],
-            'date'                  => SITE['DATE']
+            'date'                  => SITE['DATE'],
+            'message_of_day'        => \identifyThePartOfDay(date('H'))
         ]);
     }
 

@@ -4,12 +4,22 @@
 
 	<h1>Materiais</h1>
 	<p style="text-align: justify;">
-		Nessa aba do site você terá acesso aos materiais que o nosso projeto "<strong>{{ name_site }}</strong>"
-		está disponibilizando gratuitamente para alunos da rede pública que sonham em entrar em uma escola técnica
-		de excelência. No botão <strong>Provas</strong> você terá acesso as provas oficiais do <strong>IFCE
-		<i>Campi</i> Fortaleza e Caucaia</strong>, já no botão <strong>Resoluções</strong> você terá acesso as
-		resoluções comentadas produzidas pela equipe de gestores de provas do nosso projeto.
+		Nessa aba do site você terá acesso aos materiais de estudo que o nosso projeto "<strong>{{ name_site }}</strong>"
+		está disponibilizando gratuitamente para estudantes que sonham em cursar um ensino médio de qualidade. Logo abaixo
+		estão catolagadas algumas escolas com provas do mesmo e as resoluções comentadas dessa prova, produzida pelos
+		gestores de provas do "<strong>{{ name_site }}</strong>".
 	</p>
+
+	<div class="alert alert-dismissible alert-danger">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<h4 class="alert-heading">Atenção!</h4>
+		<p class="mb-0" style="text-align: justify;">
+			No momento estamos produzindo as resoluções da provas do processo seletivo para ingressar no IFCE <i>Campi</i>
+			Fortaleza e Caucaia, então no momento só temos catolagados os materiais do mesmo.
+		</a>.</p>
+	</div>
+
+	<h2>IFCE</h2>
 
 	<div class="card border-success mb-3" style="max-width: 100%;">
 		<div class="card-body">
@@ -28,5 +38,6 @@
 		  <a href="{{ url_base_user }}materiais/resolucoes" class="btn btn-success">Resoluções</a>
 		</div>
 	</div>
+	<hr>
 
 {% endblock %}
