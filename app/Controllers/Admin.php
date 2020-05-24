@@ -75,7 +75,10 @@ class Admin extends Controller
         echo $this->twig->render('admin/dashboard/home.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
-            'assets'                    => DIR['ASSETS']
+            'assets'                    => DIR['ASSETS'],
+            'admin'                     => ['firstName' => $_SESSION['firstName'],
+                                            'lastName' => $_SESSION['lastName'],
+                                            'rules' => $_SESSION['rules']],
         ]);
     }
 
@@ -93,7 +96,8 @@ class Admin extends Controller
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS'],
             'admin'                     => ['firstName' => $_SESSION['firstName'],
-                                            'lastName' => $_SESSION['lastName']],
+                                            'lastName' => $_SESSION['lastName'],
+                                            'rules' => $_SESSION['rules']],
             'years'                     => $this->model->getAllYears(),
             'disciplines'               => $this->model->getAllDisciplines()
         ]);
@@ -143,6 +147,9 @@ class Admin extends Controller
                 'name_site'                 => SITE['NAME'],
                 'section_site'              => 'Dashboard',
                 'assets'                    => DIR['ASSETS'],
+                'admin'                     => ['firstName' => $_SESSION['firstName'],
+                                                'lastName' => $_SESSION['lastName'],
+                                                'rules' => $_SESSION['rules']],
                 'action'                    => 'editar-resolucao/enviar',
                 'admin'                     => $_POST['author'],
                 'exam_year'                 => $_POST['exam_year'],
@@ -155,6 +162,9 @@ class Admin extends Controller
                 'name_site'                 => SITE['NAME'],
                 'section_site'              => 'Dashboard',
                 'assets'                    => DIR['ASSETS'],
+                'admin'                     => ['firstName' => $_SESSION['firstName'],
+                                                'lastName' => $_SESSION['lastName'],
+                                                'rules' => $_SESSION['rules']],
                 'action'                    => 'editar-resolucao',
                 'admin'                     => ['firstName' => $_SESSION['firstName'],
                                                 'lastName' => $_SESSION['lastName']],
@@ -205,7 +215,10 @@ class Admin extends Controller
         echo $this->twig->render('admin/dashboard/blog/addPost.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
-            'assets'                    => DIR['ASSETS']
+            'assets'                    => DIR['ASSETS'],
+            'admin'                     => ['firstName' => $_SESSION['firstName'],
+                                            'lastName' => $_SESSION['lastName'],
+                                            'rules' => $_SESSION['rules']],
         ]);
     }
 
@@ -214,7 +227,10 @@ class Admin extends Controller
         echo $this->twig->render('admin/dashboard/blog/editPost.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
-            'assets'                    => DIR['ASSETS']
+            'assets'                    => DIR['ASSETS'],
+            'admin'                     => ['firstName' => $_SESSION['firstName'],
+                                            'lastName' => $_SESSION['lastName'],
+                                            'rules' => $_SESSION['rules']]
         ]);
     }
 
@@ -223,7 +239,10 @@ class Admin extends Controller
         echo $this->twig->render('admin/dashboard/blog/viewMyData.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
-            'assets'                    => DIR['ASSETS']
+            'assets'                    => DIR['ASSETS'],
+            'admin'                     => ['firstName' => $_SESSION['firstName'],
+                                            'lastName' => $_SESSION['lastName'],
+                                            'rules' => $_SESSION['rules']]
         ]);
     }
 
@@ -232,7 +251,7 @@ class Admin extends Controller
         $_SESSION['isLogged'] = false;
         unset($_SESSION['firstName']);
         unset($_SESSION['lastName']);
-        unset($_SESSION['rule']);
+        unset($_SESSION['rules']);
         \header('Location: ' . URLPAGE . 'admin');
     }
 }

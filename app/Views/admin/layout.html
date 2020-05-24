@@ -17,37 +17,61 @@
             <nav class="navbar  navbar-dark bg-dark nav-menu flex-column">
                 <a href="{{ url_base_admin }}home"></a><img src="{{ assets }}img/logo.svg">
                 <a class="navbar-brand text-center" href="{{ url_base_admin }}home">{{ name_site | upper }}</a>
-                  <ul class="navbar-nav m1-auto flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_base_admin }}adicionar-resolucao">
-                            Adicionar Resolução
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_base_admin }}editar-resolucao">
-                            Editar Resolução
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_base_admin }}adicionar-post">
-                            Adicionar post
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_base_admin }}editar-post">
-                            Editar post
-                        </a>
-                    </li>
+                  
+                <hr>
+                
+                <ul class="navbar-nav m1-auto flex-column">
+
+                    {% if ('admin' in admin.rules) or ('reso' in admin.rules) %}
+                        <a>{{ 'GESTORES DE PROVAS' }}</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_base_admin }}adicionar-resolucao">
+                                Adicionar Resolução
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_base_admin }}editar-resolucao">
+                                Editar Resolução
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    <hr>
+
+                    {% if ('admin' in admin.rules) or ('reso' in admin.rules) %}
+                        <a>{{ 'GESTORES DE BLOG' }}</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_base_admin }}adicionar-post">
+                                Adicionar post
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_base_admin }}editar-post">
+                                Editar post
+                            </a>
+                        </li>
+
+                    {% endif %}
+
+                    <hr>
+
+                    <a>{{ 'OPÇÕES' }}</a>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_base_admin }}meus-dados">
                             Meus Dados
                         </a>
                     </li>
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_base_admin }}sair">
                             Sair
                         </a>
                     </li>
+
+
                   </ul>
               </nav>
         </div>
