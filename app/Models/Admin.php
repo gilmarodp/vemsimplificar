@@ -16,12 +16,14 @@ class Admin extends Model
     public function haveThisRole(string $role)
     {
         if (isset($_SESSION['roles']) && !empty($_SESSION['roles'])) {
-            if (\strpos($_SESSION['roles'], $role) || \strpos($_SESSION['roles'], 'admin'))
+            if (\strpos($_SESSION['roles'], $role) || \strpos($_SESSION['roles'], 'admin')){
                 return true;
-            else
+            } else {
                 \header('Location: ' . URLPAGE . 'admin/home');
-        } else 
-        \header('Location: ' . URLPAGE . 'admin/home');
+            }
+        } else {
+            \header('Location: ' . URLPAGE . 'admin/home');
+        } 
     }
 
     // ===================================================================================
