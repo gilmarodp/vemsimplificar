@@ -234,7 +234,7 @@ class Admin extends Controller
 
     public function viewMyData(){
         $this->isLogged();
-        echo $this->twig->render('admin/dashboard/blog/viewMyData.html', [
+        echo $this->twig->render('admin/dashboard/myData/viewMyData.html', [
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS'],
