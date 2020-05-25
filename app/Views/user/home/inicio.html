@@ -1,8 +1,17 @@
 {% extends 'user/layout.html' %}
 
 {% block content %}
-	
-	<h1>Início</h1>
+	<br>
+	<div class="jumbotron">
+		<h1>Vem Simplificar!</h1>
+		<p class="lead" style="text-align: justify;">Seja bem vindo a nossa plataformas de estudos para você que vai começar o ensino médio.</p>
+		<hr class="my-3">
+		<p>Venha conhecer todos os serviços que oferecemos:</p>
+		<p class="lead">
+			<a class="btn btn-success" href="#inicio" role="button">O que fazemos</a>
+		</p>
+	</div>
+	<h1 id="inicio">Início</h1>
 	<p style="text-align: justify;">
 		{{ message_of_day }}, seja bem vindo ao nosso projeto "<strong>{{ name_site }}</strong>".
 		Aqui você vai encontrar materiais de estudos totalmente gratuitos com o intuito de ajudar
@@ -11,39 +20,74 @@
 	</p>
 	<hr>
 	<h2>Como utilizar?</h2>
-	<p style="text-align: justify;">
-		A plataforma de estudos em si é bastante simples, é exatamente o que pregamos, o princípio
+	<p>
+		O site do "<strong>{{ name_site }}</strong>" é a nossa principal plataforma, pois nele estão localizados os principais
+		materiais de
+		estudo, além de conter todas as informações que você prescisa. Aqui você tem acesso as formas de contato conosco, ao
+		blog de notícias e novidades, há informações sobre as provas de seleção do IFCE e , além
+		de todos os materiais que disponibilizamos, é claro. Caso queira saber mais sobre o
+		que oferecemos no geral, por favor desça mais e selecione nesses botões a página que deseja saber mais ou leia sobre
+		o projeto na próxima seção. A plataforma de estudos em si é bastante simples, é exatamente o que pregamos, o princípio
 		<strong>KISS</strong> (Keep It Simple, Stupid). A plataforma gira em torno dos menus na
 		extremidade direita da página.
-		<ul>
-			<li><p style="text-align: justify;"><strong>Início:</strong> Aqui mesmo :).</p></li>
-
-			<li>
-				<p style="text-align: justify;">
-					<strong>Materiais:</strong> Conteúdo principal da plataforma, contendo provas e
-					resoluções comentadas produzidas pelos gestores de provas do "<strong>{{ name_site }}</strong>".
-				</p>
-			</li>
-
-			<li>
-				<p style="text-align: justify;">
-					<strong>Contato:</strong> Em contato, vocês teram segunda parte mais importante da plataforma,
-					é lá que vocês poderam ter um contato mais direto com a gente, atráves do nosso e-mail de
-					contato ou atráves do nosso servidor do
-					<a href="{{ url_base_user }}contato#discord">
-						<span class="badge badge-primary">Discord</span>
-					</a>.
-				</p>
-			</li>
-
-			<li>
-				<p style="text-align: justify;">
-					<strong>Sobre:</strong> Em sobre, vocês teram mais informações sobre o projeto, o contexto
-					em que decidimos nos dedicar a esse projeto e algumas informações sobre as pessoas responsáveis
-					pelo projeto.
-				</p>
-			</li>
-		</ul>
 	</p>
+
+	<button class="btn btn-success form-control" style="border: 1px solid transparent;" type="button" data-toggle="collapse" data-target="#collapseInicio" aria-expanded="false" aria-controls="collapseInicio">
+		Início
+	</button>
+	<div class="collapse" id="collapseInicio">
+		<div class="card card-body">
+			<p style="text-align: justify;">
+				Aqui mesmo :)
+			</p>
+		</div>
+	</div>
+
+	<button class="btn btn-success form-control" style="border: 1px solid transparent;" type="button" data-toggle="collapse" data-target="#collapseMateriais" aria-expanded="false" aria-controls="collapseMateriais">
+		Materiais
+	</button>
+	<div class="collapse" id="collapseMateriais">
+		<div class="card card-body">
+			<p style="text-align: justify;">
+				Conteúdo principal da plataforma, contendo provas e resoluções comentadas produzidas pelos gestores de provas
+				do "<strong>{{ name_site }}</strong>", com detalhes sobre o conteúdo e com um design fácil de usar.
+			</p>
+		</div>
+	</div>
+	
+	
+	<button class="btn btn-success form-control" style="border: 1px solid transparent;" type="button" data-toggle="collapse" data-target="#collapseContato" aria-expanded="false" aria-controls="collapseContato">
+		Contato
+	</button>
+	<div class="collapse" id="collapseContato">
+		<div class="card card-body">
+			<p style="text-align: justify;">
+				Em contato, vocês teram segunda parte mais importante da plataforma, é lá que vocês poderam ter um contato mais
+				direto com a gente, atráves do nosso e-mail de contato ou atráves do nosso servidor do 
+				<a href="{{ url_base_user }}contato#discord"><span class="badge badge-primary">Discord</span></a>.
+			</p>
+		</div>
+	</div>
+	
+	<button class="btn btn-success form-control" style="border: 1px solid transparent;" type="button" data-toggle="collapse" data-target="#collapseSobre" aria-expanded="false" aria-controls="collapseSobre">
+		Sobre
+	</button>
+	<div class="collapse" id="collapseSobre">
+		<div class="card card-body">
+			<p style="text-align: justify;">
+				Em sobre, vocês teram mais informações sobre o projeto, o contexto em que decidimos nos dedicar a esse projeto e algumas informações sobre as pessoas responsáveis pelo projeto.
+			</p>
+		</div>
+	</div>
+	
+	<hr>
+
+	<h2>O Projeto</h2>
+	<p style="text-align: justify;">O nosso projeto é algo bem completo, criamos uma rede de estudos usando duas plataformas e tudo foi criado por nós utilizando ferramentas a nossa disposição. Com nossa iniciativa hoje você pode acessar tudo isso:</p>
+	<ul>
+		<li><p style="text-align: justify;">Resoluções de Vestibulares de escolas e dos Testes de Seleção do IFCE</p></li>
+		<li><p style="text-align: justify;">Resumos de Conteúdos para estudar</p></li>
+		<li><p style="text-align: justify;">Chat para tirar dúvidas sobre conteúdos ou questões em nosso Servidor do Discord</p></li>
+	</ul>
 
 {% endblock %}

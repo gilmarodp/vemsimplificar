@@ -2,4 +2,9 @@
 
 {% block content %}
     <h1>Erro {{ errcode }}</h1>
+    <p style="text-align: justify;">
+        Desculpa, mas essa página não existe... Para voltar ao início do site, basta clicar no botão
+        <strong>Voltar</strong>.
+    </p>
+    <a class="btn btn-success" href="{{ url_base_user }}">Voltar</a>
 {% endblock %}
