@@ -51,20 +51,20 @@ class User extends Controller
         ) 
         {
             if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                echo "<alert>Coloque um e-mail de verdade</alert>";
+                echo "<script>alert(Coloque um e-mail de verdade);</script>";
             }
             $email = new Email();
             $email->add(
-                "Convite para participar do grupo do discord",
+                "Convite para participar do grupo do Discord",
                 file_get_contents(DIRPAGE . 'docs/includes/email.html'),
                 $_POST['name'],
                 $_POST['email']
             )->send();
             if (!$email->error()) {
-                echo "<alert>Pedido enviado com sucesso! Aguarde o convite no seu e-mail</alert>";
+                echo "<script>alert('Pedido enviado com sucesso! Aguarde o convite no seu e-mail');</script>";
                 \header('Location: ' . URLPAGE . 'contato');
             } else {
-                echo "<alert>Erro ao enviar pedido, nos envie um e-mail.</alert>";
+                echo "<script>alert(Erro ao enviar pedido, nos envie um e-mail.);</script>";
             }
         }
     }
