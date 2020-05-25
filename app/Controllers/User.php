@@ -61,10 +61,10 @@ class User extends Controller
                 $_POST['email']
             )->send();
             if (!$email->error()) {
-                echo "<script>alert('Pedido enviado com sucesso! Aguarde o convite no seu e-mail');</script>";
                 \header('Location: ' . URLPAGE . 'contato');
             } else {
                 echo "<script>alert(Erro ao enviar pedido, nos envie um e-mail.);</script>";
+                \header('Location: ' . URLPAGE . 'contato');
             }
         }
     }
