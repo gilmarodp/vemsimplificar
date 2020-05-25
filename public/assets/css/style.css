@@ -60,3 +60,13 @@
 	background-color: var(--white);
 	border: 1px solid var(--white);
 }
+
+/* B O L A S */
+.ball {
+	border-radius: 50%;
+    display: inline-block;
+    height: 150px;
+    width: 150px;
+    border: 1px solid #000000;
+    background-color: transparent;
+}
