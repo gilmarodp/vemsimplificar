@@ -33,7 +33,8 @@ $router->get("/resolucoes/{year}/{discipline}/{number_question}", "Materials:res
  * [Contato]
  */
 $router->group("contato");
-$router->get("/", "User:contact");
+$router->get("/",               "User:contact");
+$router->post("/enviar-pedido", "User:sendContactDiscord");
 
 /**
  * [Sobre]

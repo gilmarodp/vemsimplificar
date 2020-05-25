@@ -3,5 +3,48 @@
 {% block content %}
 
 	<h1>Contato</h1>
+	<p style="text-align: justify;">
+		Existe algumas formas de entrar em contato conosco, a forma principal é pelo
+		<a href="{{ url_base_user }}contato#discord">
+			<span class="badge badge-primary">Discord</span>
+		</a>,
+		onde estamos contruindo uma comunidade de estudantes com um interesse comum, o interesse de estudar
+		e ajudar o próximo. Outra maneira de entrar em contato conosco é utilizando o e-mail de contato
+		do "<strong>{{ name_site }}</strong>".
+	</p>
 
+	<hr>
+
+	<h2>E-mail de contato</h2>
+	<p style="text-align: justify;">
+		<strong>Contato: </strong> contato@vemsimplificar.com.br <br>
+		<strong>Gilmar: </strong> gilmar@vemsimplificar.com.br <br>
+		<strong>Iuri: </strong> iuri@vemsimplificar.com.br <br>
+		<strong>Vagner: </strong> vagner@vemsimplificar.com.br 
+	</p>
+
+	<hr>
+
+	<h2 style="text-align: justify;" id="discord">Autorização para o grupo de estudos Discord</h2>
+	<p style="text-align: justify;">
+		Para conseguir ter acesso ao grupo do Discord, precisamos que você faça sua inscrição
+		colocando seu e-mail logo abaixo. Quando enviado seu e-mail, momentos depois vamos enviar
+		o convite para acessar o grupo do Discord para seu e-mail.
+	</p>
+	<form action="{{ url_base_user }}contato/enviar-pedido" method="post">
+		<fieldset>
+			<legend>Pedido para entrar</legend>
+			<div class="form-group">
+				<label for="name">Nome e Sobrenome:</label>
+				<input type="text" name="name" class="form-control" id="name" placeholder="ex.: Albert Einstein">
+			</div>
+			<div class="form-group">
+				<label for="email">E-mail:</label>
+				<input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="ex.: usuario@email.com">
+				<small id="emailHelp" class="form-text text-muted">O seu e-mail não será compartilhado com ninguém mas será usado para receber notícias importantes sobre o andamento do projeto.</small>
+			</div>
+			<input type="submit" class="form-control btn btn-success" value="Enviar">
+		</fieldset>
+	</form>
+	<br><br>
 {% endblock %}

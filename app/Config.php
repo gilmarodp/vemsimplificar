@@ -89,3 +89,12 @@ define('NAME_DISCIPLINE_ID', [
 	'Matemática'		=> '6',
 	'Química'			=> '7'
 ]);
+
+define('MAIL', [
+	'host' 				=> 'vemsimplificar.com.br ',
+	'port' 				=> '465',
+	'user' 				=> 'discord@vemsimplificar.com.br',
+	'pass' 				=> 'GNnZ86#4RG86',
+	'from_name' 		=> 'Discord - Vem Simplificar',
+	'from_email' 		=> 'discord@vemsimplificar.com.br'
+]);

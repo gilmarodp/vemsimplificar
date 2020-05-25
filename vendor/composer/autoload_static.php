@@ -22,6 +22,10 @@ class ComposerStaticInit87a2a2eab63f898b0da788e34fb836e6
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'C' => 
         array (
             'CoffeeCode\\Router\\' => 18,
@@ -45,6 +49,10 @@ class ComposerStaticInit87a2a2eab63f898b0da788e34fb836e6
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'CoffeeCode\\Router\\' => 
         array (
