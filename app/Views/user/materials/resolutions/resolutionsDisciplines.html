@@ -4,8 +4,7 @@
 
 	<h1>Disciplinas</h1>
 	<p style="text-align: justify;">Falta pouco para você acessar as resoluções agora, basta selecionar a disciplina que deseja. Depois de
-	cliclar no botão acessar, você vai ser redirecionado a <i><strong>primeira</strong></i> questão da disciplina
-	que você selecionou.
+	cliclar no botão acessar, você vai ser redirecionado a <i><strong>primeira</strong></i> questão da disciplina que você selecionou.
 	</p>
 
 	<table class="table table-hover">
@@ -19,7 +18,7 @@
 			{% for resolutions_discipline in resolutions_disciplines %}
 			<tr class="table-light">
 				<th scope="row">{{ resolutions_discipline.discipline }}</th>
-				<td><a class="btn btn-success" href="{{ url_base_user }}materiais/resolucoes/{{ year }}/{{ resolutions_discipline.name_normal }}/1" style="color: white;">Acessar</a></td>
+				<td><a class="btn btn-success" href="{{ url_base_user }}materiais/{{ school }}/resolucoes/{{ year }}/{{ resolutions_discipline.name_normal }}/1" style="color: white;">Acessar</a></td>
 			</tr>
 			{% endfor %}
 		</tbody>

@@ -69,7 +69,14 @@ class Admin extends Model
     // ===================================================================================
     // ===================================================================================
 
+    public function getAllSchools()
+    {
+        $sql = "SELECT * FROM " . PREFIX_DB . "schools";
+        $stmt = $this->pdo->query($sql);
+        $schools = $stmt->fetchAll(\PDO::FETCH_OBJ);
 
+        return $schools;
+    }
 
     public function getAllYears ()
     {

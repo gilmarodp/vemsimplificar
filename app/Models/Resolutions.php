@@ -6,10 +6,33 @@ use \App\Core\Model;
 
 class Resolutions extends Model
 {
-    public function getAllResolutionsYears()
+
+    public function getSchool(string $school_codename)
     {
-        $sql = "SELECT `year` FROM " . PREFIX_DB . "resolutions_years WHERE `status` = 'completo' OR `status` = 'completando'";
+        $sql = "SELECT `name` FROM " . PREFIX_DB . "schools WHERE `codename` = :codename";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':codename', $school_codename, \PDO::PARAM_STR);
+        $stmt->execute();
+        $school = $stmt->fetch(\PDO::FETCH_OBJ);
+
+        return $school;
+    }
+
+    public function getAllSchools()
+    {
+        $sql = "SELECT * FROM " . PREFIX_DB . "schools";
         $stmt = $this->pdo->query($sql);
+        $schools = $stmt->fetchAll(\PDO::FETCH_OBJ);
+
+        return $schools;
+    }
+
+    public function getAllResolutionsYears(string $school)
+    {
+        $sql = "SELECT `year` FROM " . PREFIX_DB . "resolutions_years WHERE `school` = :school AND (`status` = 'completo' OR `status` = 'completando')";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':school', $school, \PDO::PARAM_STR);
+        $stmt->execute();
         $resolutionsYears = $stmt->fetchAll(\PDO::FETCH_OBJ);
 
         return $resolutionsYears;

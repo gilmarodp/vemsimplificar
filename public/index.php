@@ -23,11 +23,11 @@ $router->get("/inicio", "User:home");
  * [Materiais]
  */
 $router->group("materiais");
-$router->get("/", "Materials:home");
-$router->get("/provas", "Materials:exams");
-$router->get("/resolucoes", "Materials:resolutionsYears");
-$router->get("/resolucoes/{year}", "Materials:resolutionsDisciplines");
-$router->get("/resolucoes/{year}/{discipline}/{number_question}", "Materials:resolutionQuestion");
+$router->get("/", 																	"Materials:home");
+$router->get("/{school}/provas", 													"Materials:exams");
+$router->get("/{school}/resolucoes", 												"Materials:resolutionsYears");
+$router->get("/{school}/resolucoes/{year}", 										"Materials:resolutionsDisciplines");
+$router->get("/{school}/resolucoes/{year}/{discipline}/{number_question}", 			"Materials:resolutionQuestion");
 
 /**
  * [Contato]

@@ -25,7 +25,8 @@ class Materials extends Controller
             'name_site'             => SITE['NAME'],
             'section_site'          => 'Materiais',
             'assets'                => DIR['ASSETS'],
-            'date'                  => SITE['DATE']
+            'date'                  => SITE['DATE'],
+            'schools'               => (new Resolutions)->getAllSchools()
         ]);
     }
 
@@ -46,7 +47,8 @@ class Materials extends Controller
             'section_site'                  => 'Provas',
             'assets'                        => DIR['ASSETS'],
             'date'                          => SITE['DATE'],
-            'exams'                         => (new Exams)->getAllExams()
+            'school_name'                   => (new Resolutions)->getSchool($data['school']),
+            'exams'                         => (new Exams)->getAllExams($data['school'])
         ]);
     }
 
@@ -58,7 +60,6 @@ class Materials extends Controller
     // ===================================================================================
     // ===================================================================================
 
-
     public function resolutionsYears($data)
     {
         echo $this->twig->render('user/materials/resolutions/resolutionsYears.html', [
@@ -66,7 +67,9 @@ class Materials extends Controller
             'section_site'                  => 'Resoluções',
             'assets'                        => DIR['ASSETS'],
             'date'                          => SITE['DATE'],
-            'resolution_years'              => (new Resolutions)->getAllResolutionsYears()
+            'school'                        => $data['school'],
+            'school_name'                   => (new Resolutions)->getSchool($data['school']),
+            'resolution_years'              => (new Resolutions)->getAllResolutionsYears($data['school'])
         ]);
     }
 
@@ -78,6 +81,7 @@ class Materials extends Controller
             'assets'                        => DIR['ASSETS'],
             'date'                          => SITE['DATE'],
             'year'                          => $data['year'],
+            'school'                        => $data['school'],
             'resolutions_disciplines'       => (new Resolutions)->getAllResolutionsDisciplines()
         ]);
     }

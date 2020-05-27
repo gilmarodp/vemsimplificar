@@ -92,6 +92,7 @@ class Admin extends Controller
             'admin'                     => ['firstName' => $_SESSION['firstName'],
                                             'lastName' => $_SESSION['lastName'],
                                             'roles' => $_SESSION['roles']],
+            'schools'                   => $this->model->getAllSchools(),
             'years'                     => $this->model->getAllYears(),
             'disciplines'               => $this->model->getAllDisciplines()
         ]);
