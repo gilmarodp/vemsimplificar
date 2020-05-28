@@ -7,6 +7,15 @@ use \App\Core\Model;
 class Resolutions extends Model
 {
 
+    public function getAllSchools()
+    {
+        $sql = "SELECT * FROM " . PREFIX_DB . "schools";
+        $stmt = $this->pdo->query($sql);
+        $schools = $stmt->fetchAll(\PDO::FETCH_OBJ);
+
+        return $schools;
+    }
+    
     public function getSchool(string $school_codename)
     {
         $sql = "SELECT `name` FROM " . PREFIX_DB . "schools WHERE `codename` = :codename";
@@ -17,16 +26,7 @@ class Resolutions extends Model
 
         return $school;
     }
-
-    public function getAllSchools()
-    {
-        $sql = "SELECT * FROM " . PREFIX_DB . "schools";
-        $stmt = $this->pdo->query($sql);
-        $schools = $stmt->fetchAll(\PDO::FETCH_OBJ);
-
-        return $schools;
-    }
-
+    
     public function getAllResolutionsYears(string $school)
     {
         $sql = "SELECT `year` FROM " . PREFIX_DB . "resolutions_years WHERE `school` = :school AND (`status` = 'completo' OR `status` = 'completando')";
@@ -40,7 +40,7 @@ class Resolutions extends Model
 
     public function getAllResolutionsDisciplines()
     {
-        $sql = "SELECT `discipline`, `name_normal`, `number_questions` FROM " . PREFIX_DB . "disciplines";
+        $sql = "SELECT `" . PREFIX_DB . "disciplines`.`discipline`, `" . PREFIX_DB . "disciplines`.`name_normal` FROM `" . PREFIX_DB . "disciplines` INNER JOIN `" . PREFIX_DB . "resolutions_questions` ON `" . PREFIX_DB . "disciplines`.`id`=`" . PREFIX_DB . "resolutions_questions`.`discipline` LIMIT 1 ";
         $stmt = $this->pdo->query($sql);
         $resolutionsDisciplines = $stmt->fetchAll(\PDO::FETCH_OBJ);
 
