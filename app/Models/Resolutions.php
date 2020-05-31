@@ -7,6 +7,12 @@ use \App\Core\Model;
 class Resolutions extends Model
 {
 
+    // ======================================================
+    // ======================================================
+    // ================= SCHOOLS ============================
+    // ======================================================
+    // ======================================================
+
     public function getAllSchools()
     {
         $sql = "SELECT * FROM " . PREFIX_DB . "schools";
@@ -26,6 +32,12 @@ class Resolutions extends Model
 
         return $school;
     }
+   
+    // ======================================================
+    // ======================================================
+    // ================= RESOLUTIONS ========================
+    // ======================================================
+    // ======================================================
     
     public function getAllResolutionsYears(string $school)
     {
@@ -38,13 +50,16 @@ class Resolutions extends Model
         return $resolutionsYears;
     }
 
-    public function getAllResolutionsDisciplines()
+    public function getAllResolutionsDisciplines(string $school_codename)
     {
-        $sql = "SELECT `" . PREFIX_DB . "disciplines`.`discipline`, `" . PREFIX_DB . "disciplines`.`name_normal` FROM `" . PREFIX_DB . "disciplines` INNER JOIN `" . PREFIX_DB . "resolutions_questions` ON `" . PREFIX_DB . "disciplines`.`id`=`" . PREFIX_DB . "resolutions_questions`.`discipline` LIMIT 1 ";
-        $stmt = $this->pdo->query($sql);
-        $resolutionsDisciplines = $stmt->fetchAll(\PDO::FETCH_OBJ);
+        $sql = "SELECT `disciplines` FROM `" . PREFIX_DB . "schools` WHERE `codename`=:school_codename LIMIT 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':school_codename', $school_codename, \PDO::PARAM_STR);
+        $stmt->execute();
+        $resolutionsDisciplines = $stmt->fetch(\PDO::FETCH_OBJ);
+        $resolutionsDisciplines->disciplines = json_decode($resolutionsDisciplines->disciplines, JSON_PRETTY_PRINT);
 
-        return $resolutionsDisciplines;
+        return $resolutionsDisciplines->disciplines;
     }
 
     public function getNumberQuestions(string $exam_year, string $discipline_id)
@@ -69,7 +84,8 @@ class Resolutions extends Model
         $stmt->execute();
         $resolution = $stmt->fetch(\PDO::FETCH_OBJ);
 
-        $resolution->date_resolution = date('d/m/Y', strtotime($resolution->date_resolution));
+        if (!$resolution)
+            $resolution = null;
 
         return $resolution;
     }

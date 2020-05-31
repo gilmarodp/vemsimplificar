@@ -15,12 +15,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for resolutions_discipline in resolutions_disciplines %}
+            {% for resolutions_discipline in resolutions_disciplines %}
 			<tr class="table-light">
-				<th scope="row">{{ resolutions_discipline.discipline }}</th>
+                <th scope="row">{{ resolutions_discipline.discipline }}</th>
 				<td><a class="btn btn-success" href="{{ url_base_user }}materiais/{{ school }}/resolucoes/{{ year }}/{{ resolutions_discipline.name_normal }}/1" style="color: white;">Acessar</a></td>
 			</tr>
-			{% endfor %}
+            {% endfor %}
 		</tbody>
 	</table>
 

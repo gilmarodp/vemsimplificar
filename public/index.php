@@ -23,11 +23,11 @@ $router->get("/inicio", "User:home");
  * [Materiais]
  */
 $router->group("materiais");
-$router->get("/", 																	"Materials:home");
-$router->get("/{school}/provas", 													"Materials:exams");
-$router->get("/{school}/resolucoes", 												"Materials:resolutionsYears");
-$router->get("/{school}/resolucoes/{year}", 										"Materials:resolutionsDisciplines");
-$router->get("/{school}/resolucoes/{year}/{discipline}/{number_question}", 			"Materials:resolutionQuestion");
+$router->get("/", 																"Materials:home");
+$router->get("/{school}/provas", 												"Materials:exams");
+$router->get("/{school}/resolucoes", 											"Materials:resolutionsYears");
+$router->get("/{school}/resolucoes/{year}", 									"Materials:resolutionsDisciplines");
+$router->get("/{school}/resolucoes/{year}/{discipline}/{number_question}", 		"Materials:resolutionQuestion");
 
 /**
  * [Contato]
@@ -50,6 +50,7 @@ $router->get("/",                               "Admin:login");
 $router->post("/validate",                      "Admin:validateAdminLogin");
 $router->get("/home",                           "Admin:home");
 
+$router->post("/ajax-data",						"Admin:ajaxData");
 $router->get("/adicionar-resolucao",            "Admin:addResolution");
 $router->post("/adicionar-resolucao/enviar",    "Admin:sendResolution");
 

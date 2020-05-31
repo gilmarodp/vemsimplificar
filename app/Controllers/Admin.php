@@ -15,11 +15,11 @@ class Admin extends Controller
         $this->model = new \App\Models\Admin;
     }
 
-    // ===================================================================================
-    // ===================================================================================
-    // =============================== LOGIN =============================================
-    // ===================================================================================
-    // ===================================================================================
+    // =================================================================
+    // =================================================================
+    // =============================== LOGIN ===========================
+    // =================================================================
+    // =================================================================
 
 
     public function login()
@@ -53,13 +53,11 @@ class Admin extends Controller
 
     
 
-    // ===================================================================================
-    // ===================================================================================
-    // ================================== HOME ===========================================
-    // ===================================================================================
-    // ===================================================================================
-
-
+    // =================================================================
+    // =================================================================
+    // ================================== HOME =========================
+    // =================================================================
+    // =================================================================
 
 
     public function home()
@@ -69,32 +67,39 @@ class Admin extends Controller
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS'],
-            'admin'                     => ['firstName' => $_SESSION['firstName'],
+            'admin_data'                => ['firstName' => $_SESSION['firstName'],
                                             'lastName' => $_SESSION['lastName'],
                                             'roles' => $_SESSION['roles']],
         ]);
     }
 
 
-    // ===================================================================================
-    // ===================================================================================
-    // =============================== RESOLUTIONS =======================================
-    // ===================================================================================
-    // ===================================================================================
+    // =================================================================
+    // =================================================================
+    // =============================== RESOLUTIONS =====================
+    // =================================================================
+    // =================================================================
 
-    public function addResolution(){
+    public function ajaxData ()
+    {
+        $this->model->isLogged();
+        if (isset($_POST) && !empty($_POST))
+            echo (new \App\Models\AjaxData)->getDataToAjax($_POST);
+    }
+
+    public function addResolution ()
+    {
         $this->model->isLogged();
         $this->model->haveThisRole('reso');
         echo $this->twig->render('admin/dashboard/resolution/addResolution.html', [
-            'name_site'                 => SITE['NAME'],
-            'section_site'              => 'Dashboard',
-            'assets'                    => DIR['ASSETS'],
-            'admin'                     => ['firstName' => $_SESSION['firstName'],
-                                            'lastName' => $_SESSION['lastName'],
-                                            'roles' => $_SESSION['roles']],
-            'schools'                   => $this->model->getAllSchools(),
-            'years'                     => $this->model->getAllYears(),
-            'disciplines'               => $this->model->getAllDisciplines()
+            'name_site'             => SITE['NAME'],
+            'action'                => 'adicionar-resolucao/enviar',
+            'section_site'          => 'Dashboard',
+            'assets'                => DIR['ASSETS'],
+            'admin_data'            => ['firstName' => $_SESSION['firstName'],
+                                        'lastName' => $_SESSION['lastName'],
+                                        'roles' => $_SESSION['roles']],
+            'schools'               => $this->model->getAllSchools()
         ]);
     }
 
@@ -103,12 +108,14 @@ class Admin extends Controller
         $this->model->isLogged();
         if (
             isset($_POST['author']) && !empty($_POST['author']) &&
+            isset($_POST['name_school']) && !empty($_POST['name_school']) &&
             isset($_POST['exam_year']) && !empty($_POST['exam_year']) &&
             isset($_POST['discipline']) && !empty($_POST['discipline']) &&
             isset($_POST['number_question']) && !empty($_POST['number_question']) &&
             isset($_POST['content_question']) && !empty($_POST['content_question']) &&
             isset($_POST['resolution_question']) && !empty($_POST['resolution_question'])
         ) {
+            var_dump($_POST);
             $dataResolution = [
                 'author'                => $_POST['author'],
                 'exam_year'             => $_POST['exam_year'],
@@ -116,6 +123,7 @@ class Admin extends Controller
                 'number_question'       => $_POST['number_question'],
                 'content_question'      => $_POST['content_question'],
                 'resolution_question'   => $_POST['resolution_question'],
+                'name_school'           => $_POST['name_school'],
                 'date_resolution'       => \date('Y-m-d')
             ];
         } else {\header('Location: ' . URLPAGE . 'admin/home');}
@@ -143,7 +151,7 @@ class Admin extends Controller
                 'name_site'                 => SITE['NAME'],
                 'section_site'              => 'Dashboard',
                 'assets'                    => DIR['ASSETS'],
-                'admin'                     => ['firstName' => $_SESSION['firstName'],
+                'admin_data'                => ['firstName' => $_SESSION['firstName'],
                                                 'lastName' => $_SESSION['lastName'],
                                                 'roles' => $_SESSION['roles']],
                 'action'                    => 'editar-resolucao/enviar',
@@ -159,7 +167,7 @@ class Admin extends Controller
                 'section_site'              => 'Dashboard',
                 'assets'                    => DIR['ASSETS'],
                 'action'                    => 'editar-resolucao',
-                'admin'                     => ['firstName' => $_SESSION['firstName'],
+                'admin_data'                => ['firstName' => $_SESSION['firstName'],
                                                 'lastName' => $_SESSION['lastName'],
                                                 'roles' => $_SESSION['roles']],
                 'years'                     => $this->model->getAllYears(),
@@ -197,11 +205,11 @@ class Admin extends Controller
 
 
 
-    // ===================================================================================
-    // ===================================================================================
-    // ================================ BLOG =============================================
-    // ===================================================================================
-    // ===================================================================================
+    // =================================================================
+    // =================================================================
+    // ================================ BLOG ===========================
+    // =================================================================
+    // =================================================================
 
 
     public function addPost(){
@@ -211,7 +219,7 @@ class Admin extends Controller
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS'],
-            'admin'                     => ['firstName' => $_SESSION['firstName'],
+            'admin_data'                => ['firstName' => $_SESSION['firstName'],
                                             'lastName' => $_SESSION['lastName'],
                                             'roles' => $_SESSION['roles']],
         ]);
@@ -224,7 +232,7 @@ class Admin extends Controller
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS'],
-            'admin'                     => ['firstName' => $_SESSION['firstName'],
+            'admin_data'                => ['firstName' => $_SESSION['firstName'],
                                             'lastName' => $_SESSION['lastName'],
                                             'roles' => $_SESSION['roles']]
         ]);
@@ -233,12 +241,11 @@ class Admin extends Controller
 
 
 
-    // ===================================================================================
-    // ===================================================================================
-    // =============================== OPTIONS ===========================================
-    // ===================================================================================
-    // ===================================================================================
-    
+    // =================================================================
+    // =================================================================
+    // =============================== OPTIONS =========================
+    // =================================================================
+    // =================================================================   
     
     public function viewMyData(){
         $this->model->isLogged();
@@ -246,7 +253,7 @@ class Admin extends Controller
             'name_site'                 => SITE['NAME'],
             'section_site'              => 'Dashboard',
             'assets'                    => DIR['ASSETS'],
-            'admin'                     => ['firstName' => $_SESSION['firstName'],
+            'admin_data'                => ['firstName' => $_SESSION['firstName'],
                                             'lastName' => $_SESSION['lastName'],
                                             'roles' => $_SESSION['roles']]
         ]);

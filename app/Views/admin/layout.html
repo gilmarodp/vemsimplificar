@@ -22,7 +22,7 @@
                 
                 <ul class="navbar-nav m1-auto flex-column">
 
-                    {% if ('admin' in admin.roles) or ('reso' in admin.roles) %}
+                    {% if ('admin' in admin_data.roles) or ('reso' in admin_data.roles) %}
                         <a>{{ 'GESTORES DE PROVAS' }}</a>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_base_admin }}adicionar-resolucao">
@@ -39,7 +39,7 @@
                     {% endif %}
 
 
-                    {% if ('admin' in admin.roles) or ('blog' in admin.roles) %}
+                    {% if ('admin' in admin_data.roles) or ('blog' in admin_data.roles) %}
                         <a>{{ 'GESTORES DE BLOG' }}</a>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_base_admin }}adicionar-post">

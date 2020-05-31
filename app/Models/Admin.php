@@ -27,11 +27,11 @@ class Admin extends Model
         } 
     }
 
-    // ===================================================================================
-    // ===================================================================================
-    // =============================== LOGIN  ============================================
-    // ===================================================================================
-    // ===================================================================================
+    // ================================================================
+    // ================================================================
+    // =============================== LOGIN ==========================
+    // ================================================================
+    // ================================================================
 
 
 
@@ -63,11 +63,11 @@ class Admin extends Model
 
 
 
-    // ===================================================================================
-    // ===================================================================================
-    // =============================== RESOLUTIONS =======================================
-    // ===================================================================================
-    // ===================================================================================
+    // ================================================================
+    // ================================================================
+    // =============================== RESOLUTIONS ====================
+    // ================================================================
+    // ================================================================
 
     public function getAllSchools()
     {
@@ -101,9 +101,9 @@ class Admin extends Model
     public function setResolutionQuestion (array $dataResolution)
     {
         $sql = "INSERT INTO " . PREFIX_DB . "resolutions_questions
-        (`author`, `exam_year`, `discipline`, `number_question`, `content_question`, `resolution_question`, `date_resolution`)
+        (`author`, `exam_year`, `discipline`, `number_question`, `content_question`, `resolution_question`, `school`, `date_resolution`)
         VALUES
-        (:author, :exam_year, :discipline, :number_question, :content_question, :resolution_question, :date_resolution)";
+        (:author, :exam_year, :discipline, :number_question, :content_question, :resolution_question, :name_school, :date_resolution)";
         
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':author', $dataResolution['author'], \PDO::PARAM_STR);
@@ -112,6 +112,7 @@ class Admin extends Model
         $stmt->bindParam(':number_question', $dataResolution['number_question'], \PDO::PARAM_STR);
         $stmt->bindParam(':content_question', $dataResolution['content_question'], \PDO::PARAM_STR);
         $stmt->bindParam(':resolution_question', $dataResolution['resolution_question'], \PDO::PARAM_STR);
+        $stmt->bindParam(':name_school', $dataResolution['name_school'], \PDO::PARAM_STR);
         $stmt->bindParam(':date_resolution', $dataResolution['date_resolution']);
 
         $stmt->execute();

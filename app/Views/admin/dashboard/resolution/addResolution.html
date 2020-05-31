@@ -1,7 +1,7 @@
 {% extends 'admin/layout.html' %}
 
 {% block content %}
-    <form action="{{ url_base_admin }}adicionar-resolucao/enviar" method="POST">
+    <form action="{{ url_base_admin }}{{ action }}" method="POST">
         <fieldset>
             <legend><h2>Adicionar Resolução</h2></legend>
 
@@ -13,8 +13,9 @@
             </div>
 
             <div class="form-group">
-                <label for="nameSchool">Prova da(s) Escola(s)</label>
-                <select name="nameSchool" class="form-control" id="exam_year">
+                <label for="name_school">Prova da(s) Escola(s)</label>
+                <select name="name_school" class="form-control" id="name_school">
+                    <option value="">Selecione a Escola</option>
                     {% for school in schools %}
                     <option value="{{ school.codename }}">{{ school.name }}</option>
                     {% endfor %}
@@ -22,28 +23,26 @@
             </div>
 
             <div class="form-group">
-                <label for="exam_year">Ano da Prova</label>
+                <label for="exam_year">Selecione o Ano da Prova</label>
                 <select name="exam_year" class="form-control" id="exam_year">
-                    {% for year in years %}
-                    <option value="{{ year.year }}">{{ year.year }}</option>
-                    {% endfor %}
+                    <option value="">Selecione o Ano</option>
+                    
                 </select>
             </div>
 
 
             <div class="form-group">
-                <label for="discipline">Disciplina</label>
+                <label for="discipline">Selecione a Disciplina</label>
                 <select name="discipline" class="form-control" id="discipline">
-                    {% for discipline in disciplines %}
-                    <option value="{{ discipline.id }}">{{ discipline.discipline }}</option>
-                    {% endfor %}
+                    <option value="">Selecione a Disciplina</option>
                 </select>
             </div>
-
 
             <div class="form-group">
                 <label for="number_question">Número da Questão</label>
-                <input type="number" name="number_question" class="form-control" id="number_question">
+                <select class="form-control" name="number_question" id="number_question">
+                    <option value="">Selecione o Número da Questão</option>
+                </select>
             </div>
 
             <div class="form-group">
@@ -59,8 +58,8 @@
             <br>
 
             <div class="form-group">
-                <input type="submit" class="btn btn-success form-control" onclick="return confirm('Deseja enviar a resolução?');" value="Enviar Resolução">
-                <br><br>
+                <button type="submit" class="btn btn-success form-control" onclick="alert('Você realmente quer enviar a resolução dessa questão?')">Enviar Resolução</button>
+                <br><br> 
             </div>
 
         </fieldset>

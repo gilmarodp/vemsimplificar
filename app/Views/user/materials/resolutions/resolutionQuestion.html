@@ -30,8 +30,8 @@
 	
 		<p><strong>Disciplina:</strong> {{ discipline }} (<strong>{{ year }}</strong>)</p>
 
-		<p><strong>Autor: </strong>{{ resolution.author }}</p>
-		<p><strong>Publicação de: </strong><i>{{ resolution.date_resolution }}</i></p>
+		<p><strong>Autor(a): </strong>{{ resolution.author }}</p>
+		<p><strong>Publicação de: </strong><i>{{ resolution.date_resolution|date("d/m/Y") }}</i></p>
 
 		<h6>Enunciado:</h6>
 		<strong style="float: left;">{{ number_question_url }}º) &nbsp;</strong>
@@ -42,10 +42,15 @@
 		<h6>Resolução:</h6>
 		<div id="resolution_question">{{ resolution.resolution_question | raw }}</div>
 	{% else %}
-		<p style="text-align: justify;">>
-			A resolução dessa questão em específica ainda não está pronta ou simplesmente
-			não existe a {{ number_question }}º questão de {{ discipline }} da prova de {{ year }}.
+		<p style="text-align: justify;">
+			Desculpa, ainda estamos trabalhando para produzir as resoluções das questões
+            dessa disciplina em específico, entre em contato conosco através do nosso
+            servidor no Discord e tire suas dúvidas.
 		</p>
+        <p style="text-align: justify;">
+            Para voltar para página das disciplinas, basta clicar no botão logo abaixo.
+        </p>
+        <a href=".." class="btn btn-success form-control">Voltar</a>
 	{% endif %}
 
 {% endblock %}
