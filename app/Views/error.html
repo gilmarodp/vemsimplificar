@@ -1,10 +1,14 @@
 {% extends 'user/layout.html' %}
 
 {% block content %}
-    <h1>Erro {{ errcode }}</h1>
-    <p style="text-align: justify;">
-        Desculpa, mas essa página não existe... Para voltar ao início do site, basta clicar no botão
-        <strong>Voltar</strong>.
-    </p>
-    <a class="btn btn-success" href="{{ url_base_user }}">Voltar</a>
+    <h1>Resolução</h1>
+		<p style="text-align: justify;">
+			Desculpa, ainda estamos trabalhando para produzir as resoluções das questões
+            dessa disciplina em específico, entre em contato conosco através do nosso
+            servidor no Discord e tire suas dúvidas.
+		</p>
+        <p style="text-align: justify;">
+            Para voltar para página das disciplinas, basta clicar no botão logo abaixo.
+        </p>
+        <a href="{{ url_base_user }}{{ page_ago }}" class="btn btn-success form-control">Voltar</a>
 {% endblock %}
