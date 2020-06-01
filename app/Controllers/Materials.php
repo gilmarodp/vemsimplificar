@@ -92,6 +92,7 @@ class Materials extends Controller
             'section_site'          => 'Resoluções',
             'assets'                => DIR['ASSETS'],
             'date'                  => SITE['DATE'],
+            'page_ago'              => 'materiais/' . $data['school'] . '/resolucoes/' . $data['year'],
             'year'                  => $data['year'],
             'discipline'            => DISCIPLINE_NAME[$data['discipline']],
             'number_question_url'       => $data['number_question'],
