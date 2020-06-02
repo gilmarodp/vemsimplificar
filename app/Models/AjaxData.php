@@ -158,7 +158,7 @@ class AjaxData extends Model
             isset($section['number_question']) && !empty($section['number_question']) 
         )
         {
-            $sql = "SELECT `content_question`, `resolution_question` FROM `" . PREFIX_DB . "resolutions_questions` INNER JOIN `" . PREFIX_DB . "admins` ON CONCAT(`" . PREFIX_DB . "admins`.`first_name`, ' ', `" . PREFIX_DB . "admins`.`last_name`) = `" . PREFIX_DB . "resolutions_questions`.`author` WHERE (`author` = :author OR `" . PREFIX_DB . "admins`.`roles` = 'admin') AND `exam_year` = :exam_year AND `discipline` = :discipline_id AND `number_question` = :number_question AND `school` = :name_school";
+            $sql = "SELECT `content_question`, `resolution_question` FROM `" . PREFIX_DB . "resolutions_questions` INNER JOIN `" . PREFIX_DB . "admins` WHERE (`author` = :author OR `" . PREFIX_DB . "admins`.`roles` = 'admin') AND `exam_year` = :exam_year AND `discipline` = :discipline_id AND `number_question` = :number_question AND `school` = :name_school";
             $stmt = $this->pdo->prepare($sql);
 			$stmt->bindParam(":author", $section['author'], \PDO::PARAM_STR);
 			$stmt->bindParam(":name_school", $section['name_school'], \PDO::PARAM_STR);
