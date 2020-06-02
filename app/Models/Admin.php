@@ -120,38 +120,21 @@ class Admin extends Model
 
     public function setResolutionQuestionEdited (array $dataResolution)
     {
-        $sql = "UPDATE " . PREFIX_DB . "resolutions_questions SET
+        $sql = "UPDATE `" . PREFIX_DB . "resolutions_questions` SET
         `content_question` = :content_question, `resolution_question` = :resolution_question, `date_resolution` = :date_resolution
         WHERE
-        `author` = :author AND `exam_year` = :exam_year AND `discipline` = :discipline AND `number_question` = :number_question";
+        `author` = :author AND `exam_year` = :exam_year AND `discipline` = :discipline AND `number_question` = :number_question AND `school` = :name_school";
         
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':content_question', $dataResolution['content_question'], \PDO::PARAM_STR);
         $stmt->bindParam(':resolution_question', $dataResolution['resolution_question'], \PDO::PARAM_STR);
-        $stmt->bindParam(':date_resolution', $dataResolution['date_resolution']);
+        $stmt->bindParam(':date_resolution', $dataResolution['date_resolution'], \PDO::PARAM_STR);
         $stmt->bindParam(':author', $dataResolution['author'], \PDO::PARAM_STR);
         $stmt->bindParam(':exam_year', $dataResolution['exam_year'], \PDO::PARAM_STR);
         $stmt->bindParam(':discipline', $dataResolution['discipline'], \PDO::PARAM_STR);
         $stmt->bindParam(':number_question', $dataResolution['number_question'], \PDO::PARAM_STR);
+        $stmt->bindParam(':name_school', $dataResolution['name_school'], \PDO::PARAM_STR);
 
         $stmt->execute();
-    }
-
-    public function getResolutionQuestion (array $dataResolution)
-    {
-        $sql = "SELECT `content_question`, `resolution_question` FROM " . PREFIX_DB . "resolutions_questions
-        WHERE
-        `author` = :author AND `exam_year` = :exam_year AND `discipline` = :discipline AND `number_question` = :number_question";
-        
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':author', $dataResolution['author'], \PDO::PARAM_STR);
-        $stmt->bindParam(':exam_year', $dataResolution['exam_year'], \PDO::PARAM_STR);
-        $stmt->bindParam(':discipline', $dataResolution['discipline'], \PDO::PARAM_STR);
-        $stmt->bindParam(':number_question', $dataResolution['number_question'], \PDO::PARAM_STR);
-        $stmt->execute();
-
-        $resolutionQuestion = $stmt->fetch(\PDO::FETCH_OBJ);
-
-        return $resolutionQuestion;
     }
 }

@@ -50,12 +50,12 @@ $router->get("/",                               "Admin:login");
 $router->post("/validate",                      "Admin:validateAdminLogin");
 $router->get("/home",                           "Admin:home");
 
-$router->post("/ajax-data",						"Admin:ajaxData");
+$router->post("/ajax-adicionar-resolucao",		"Admin:ajaxAddResolution");
 $router->get("/adicionar-resolucao",            "Admin:addResolution");
 $router->post("/adicionar-resolucao/enviar",    "Admin:sendResolution");
 
+$router->post("/ajax-editar-resolucao",         "Admin:ajaxEditResolution");
 $router->get("/editar-resolucao",               "Admin:editResolution");
-$router->post("/editar-resolucao",              "Admin:editResolution");
 $router->post("/editar-resolucao/enviar",       "Admin:sendResolutionEdited");
 
 $router->get("/adicionar-post",                 "Admin:addPost");
