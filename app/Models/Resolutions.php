@@ -64,7 +64,7 @@ class Resolutions extends Model
 
     public function getNumberQuestions(string $exam_year, string $discipline_id)
     {
-        $sql = "SELECT `number_question` FROM " . PREFIX_DB . "resolutions_questions WHERE `exam_year` = :exam_year AND `discipline` = :discipline_id ORDER BY `number_question`";
+        $sql = "SELECT `number_question` FROM " . PREFIX_DB . "resolutions_questions WHERE `exam_year` = :exam_year AND `discipline` = :discipline_id ORDER BY CAST(`number_question` AS INTEGER) ASC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':exam_year', $exam_year, \PDO::PARAM_STR);
         $stmt->bindParam(':discipline_id', $discipline_id, \PDO::PARAM_STR);
