@@ -15,17 +15,22 @@
 		============ RESOLUTION =============
 		=====================================
 	#}
-	{% if (resolution.content_question != "") or (resolution.resolution_question != "")%}
+	{% if (resolution.content_question != "") or (resolution.resolution_question != "") %}
 		
 	<label for="pagination">Selecione a questão desejada</label>
-	<div>
-		<ul class="pagination">
+	<div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-center">
+        <ul class="pagination pagination-sm flex-sm-wrap">
 		  {% for number_question_pagination in number_questions %}
-		  <li class="page-item">
-			<a class="page-link" href="{{ number_question_pagination.number_question }}">{{ number_question_pagination.number_question }}º</a>
-		  </li>
+            {% if '5' in number_question_pagination.number_question %}
+                {{ "<br>" }}
+            {% endif %}
+		    <li class="page-item">
+			    <a class="page-link" href="{{ number_question_pagination.number_question }}">{{ number_question_pagination.number_question }}º</a>
+		    </li>
 		  {% endfor %}
 		</ul>
+            </nav>
 	  </div>
 	
 		<p><strong>Disciplina:</strong> {{ discipline }} (<strong>{{ year }}</strong>)</p>

@@ -20,7 +20,7 @@ class User extends Controller
     {
         echo $this->twig->render('user/home/inicio.html', [
             'name_site'             => SITE['NAME'],
-            'section_site'          => 'Início',
+            'section_site'          => '',
             'assets'                => DIR['ASSETS'],
             'date'                  => SITE['DATE'],
             'message_of_day'        => \identifyThePartOfDay(date('H'))
@@ -38,7 +38,7 @@ class User extends Controller
     {
         echo $this->twig->render('user/contact/contact.html', [
             'name_site'             => SITE['NAME'],
-            'section_site'          => 'Contato',
+            'section_site'          => ' - Contato',
             'assets'                => DIR['ASSETS'],
             'date'                  => SITE['DATE']
         ]);
@@ -81,7 +81,7 @@ class User extends Controller
     {
         echo $this->twig->render('user/about/about.html', [
             'name_site'             => SITE['NAME'],
-            'section_site'          => 'Sobre',
+            'section_site'          => ' - Sobre',
             'assets'                => DIR['ASSETS'],
             'date'                  => SITE['DATE']
         ]);

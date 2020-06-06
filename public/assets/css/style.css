@@ -55,6 +55,15 @@
 	border: 1px solid var(--white);
 }
 
+.pagination {
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+
 .page-link:hover {
 	color: #02B875;
 	background-color: var(--white);

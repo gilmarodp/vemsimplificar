@@ -10,7 +10,7 @@ class Error extends Controller
     {
         echo $this->twig->render('error.html', [
             'name_site'             => SITE['NAME'],
-            'section_site'          => 'Erro ' . $data['errcode'],
+            'section_site'          => ' - Erro ' . $data['errcode'],
             'assets'                => DIR['ASSETS'],
             'date'                  => SITE['DATE'],
             'errcode'               => $data['errcode']

@@ -17,7 +17,6 @@ $router->namespace("App\Controllers");
  */
 $router->group(null);
 $router->get("/", "User:home");
-$router->get("/inicio", "User:home");
 
 /**
  * [Materiais]

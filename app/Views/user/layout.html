@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Plataforma de estudos com provas e resoluções comentadas.">
     <meta name="keywords" content="vem simplificar ifce if ensino médio estudos provas comentadas resoluções soluções conteúdo gratuito">
-    <title>{{ name_site }} - {{ section_site }}</title>
+    <title>{{ name_site }}{{ section_site }}</title>
     <link rel="shortcut icon" type="imagem/png" href="{{ assets }}img/icone16.png">
     <link rel="stylesheet" type="text/css" href="{{ assets }}css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="{{ assets }}css/style.css">
@@ -43,7 +43,7 @@
           <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarColor01">
             <ul class="navbar-nav m1-auto">
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_base_user }}inicio">Início</a>
+                <a class="nav-link" href="{{ url_base_user }}">Início</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_base_user }}materiais">Materiais</a>

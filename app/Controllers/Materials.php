@@ -11,11 +11,11 @@ class Materials extends Controller
 
 
 
-    // ===================================================================================
-    // ===================================================================================
-    // =============================== METERIALS =========================================
-    // ===================================================================================
-    // ===================================================================================
+    // =========================================================================
+    // =========================================================================
+    // =============================== METERIALS ===============================
+    // =========================================================================
+    // =========================================================================
 
 
 
@@ -23,7 +23,7 @@ class Materials extends Controller
     {
         echo $this->twig->render('user/materials/materials.html', [
             'name_site'             => SITE['NAME'],
-            'section_site'          => 'Materiais',
+            'section_site'          => ' - Materiais',
             'assets'                => DIR['ASSETS'],
             'date'                  => SITE['DATE'],
             'schools'               => (new Resolutions)->getAllSchools()
@@ -32,19 +32,18 @@ class Materials extends Controller
 
 
 
-    // ===================================================================================
-    // ===================================================================================
-    // =============================== EXAMS =============================================
-    // ===================================================================================
-    // ===================================================================================
-
+    // =========================================================================
+    // =========================================================================
+    // =============================== EXAMS ===================================
+    // =========================================================================
+    // =========================================================================
 
 
     public function exams($data)
     {
         echo $this->twig->render('user/materials/exams/examsYears.html', [
             'name_site'                     => SITE['NAME'],
-            'section_site'                  => 'Provas',
+            'section_site'                  => ' - Provas',
             'assets'                        => DIR['ASSETS'],
             'date'                          => SITE['DATE'],
             'school_name'                   => (new Resolutions)->getSchool($data['school']),
@@ -56,14 +55,15 @@ class Materials extends Controller
 
     // =========================================================================
     // =========================================================================
-    // =============================== RESOLUTIONS =============================    // =========================================================================
+    // =============================== RESOLUTIONS =============================
+    // =========================================================================
     // =========================================================================
 
     public function resolutionsYears($data)
     {
         echo $this->twig->render('user/materials/resolutions/resolutionsYears.html', [
             'name_site'                     => SITE['NAME'],
-            'section_site'                  => 'Resoluções',
+            'section_site'                  => ' - Resoluções',
             'assets'                        => DIR['ASSETS'],
             'date'                          => SITE['DATE'],
             'school'                        => $data['school'],
@@ -76,7 +76,7 @@ class Materials extends Controller
     {
         echo $this->twig->render('user/materials/resolutions/resolutionsDisciplines.html', [
             'name_site'                     => SITE['NAME'],
-            'section_site'                  => 'Resoluções',
+            'section_site'                  => ' - Resoluções',
             'assets'                        => DIR['ASSETS'],
             'date'                          => SITE['DATE'],
             'year'                          => $data['year'],
@@ -89,7 +89,7 @@ class Materials extends Controller
     {
         echo $this->twig->render('user/materials/resolutions/resolutionQuestion.html', [
             'name_site'             => SITE['NAME'],
-            'section_site'          => 'Resoluções',
+            'section_site'          => ' - Resoluções',
             'assets'                => DIR['ASSETS'],
             'date'                  => SITE['DATE'],
             'page_ago'              => 'materiais/' . $data['school'] . '/resolucoes/' . $data['year'],
