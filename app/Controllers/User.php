@@ -18,7 +18,7 @@ class User extends Controller
 
     public function home ($data)
     {
-        echo $this->twig->render('user/home/inicio.html', [
+        echo $this->twig->render('user/home/home.html', [
             'name_site'             => SITE['NAME'],
             'section_site'          => '',
             'assets'                => DIR['ASSETS'],

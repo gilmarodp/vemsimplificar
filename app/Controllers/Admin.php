@@ -70,6 +70,7 @@ class Admin extends Controller
             'admin_data'                => ['firstName' => $_SESSION['firstName'],
                                             'lastName' => $_SESSION['lastName'],
                                             'roles' => $_SESSION['roles']],
+            'message'                   => \identifyThePartOfDayAdmin(date('H'), $_SESSION['firstName'], $_SESSION['lastName']) 
         ]);
     }
 

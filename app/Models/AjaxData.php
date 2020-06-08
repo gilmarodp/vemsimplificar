@@ -7,9 +7,6 @@ use \App\Core\Model;
 class AjaxData extends Model
 {
 
-	private $year;
-	private $disciplines;
-
 	public function getToAddResolution (array $section)
 	{
         if (

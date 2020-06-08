@@ -19,6 +19,13 @@ $router->group(null);
 $router->get("/", "User:home");
 
 /**
+ * Controller: Blog.php
+ * [Blog]
+ */
+$router->group("blog");
+$router->get("/", "Blog:home");
+
+/**
  * [Materiais]
  */
 $router->group("materiais");

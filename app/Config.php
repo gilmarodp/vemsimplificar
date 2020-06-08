@@ -132,6 +132,6 @@ define('MAIL', [
 	'port' 				=> '465',
 	'user' 				=> 'discord@vemsimplificar.com.br',
 	'pass' 				=> 'GNnZ86#4RG86',
-	'from_name' 		=> 'Discord - Vem Simplificar',
+	'from_name' 		=> 'Vem Simplificar',
 	'from_email' 		=> 'discord@vemsimplificar.com.br'
 ]);
