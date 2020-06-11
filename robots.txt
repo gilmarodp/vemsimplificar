@@ -1,9 +1,18 @@
 # To all users agents from search
+User-agent: *
 Disallow: /*
 Allow: /
 Allow: /materiais
 Allow: /contato
 Allow: /sobre
+
+User-agent: Googlebot
+Disallow: /*
+Allow: /
+Allow: /materiais
+Allow: /contato
+Allow: /sobre
+
 
 Sitemap: https://www.vemsimplificar.com.br/sitemap.xml
 
