@@ -1,0 +1,9 @@
+# To all users agents from search
+Disallow: /*
+Allow: /
+Allow: /materiais
+Allow: /contato
+Allow: /sobre
+
+Sitemap: https://www.vemsimplificar.com.br/sitemap.xml
+
