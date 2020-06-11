@@ -12,6 +12,13 @@ $router = new Router(substr(URLPAGE, 0, -1));
 $router->namespace("App\Controllers");
 
 /**
+ * SEO
+ */
+$router->group(null);
+$router->get("/robots.txt", "Seo:robots");
+$router->get("/sitemap.xml", "Seo:sitemap");
+
+/**
  * Controller: User.php
  * [Home]
  */
