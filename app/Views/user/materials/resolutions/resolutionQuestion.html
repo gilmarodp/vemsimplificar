@@ -16,8 +16,8 @@
 		=====================================
 	#}
 	{% if (resolution.content_question != "") or (resolution.resolution_question != "") %}
-		
-	<label for="pagination">Selecione a questão desejada</label>
+    <a class="btn btn-danger" style="color: white;" href="{{ url_base_user }}{{ page_disciplines }}"><i style="font-size: 15px;">&#8617;</i> Voltar para disciplinas</a><br>
+    <label for="pagination"><p>Selecione a questão desejada</p></label>
 	<div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-center">
         <ul class="pagination pagination-sm flex-sm-wrap">
@@ -55,7 +55,7 @@
         <p style="text-align: justify;">
             Para voltar para página das disciplinas, basta clicar no botão logo abaixo.
         </p>
-        <a href="{{ url_base_user }}{{ page_ago }}" class="btn btn-success form-control">Voltar</a>
+        <a href="{{ url_base_user }}{{ page_disciplines }}" class="btn btn-success form-control">Voltar</a>
 	{% endif %}
 
 {% endblock %}

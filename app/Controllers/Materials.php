@@ -66,6 +66,7 @@ class Materials extends Controller
             'section_site'                  => ' - Resoluções',
             'assets'                        => DIR['ASSETS'],
             'date'                          => SITE['DATE'],
+            'page_exams'                     => 'materiais/',
             'school'                        => $data['school'],
             'school_name'                   => (new Resolutions)->getSchool($data['school']),
             'resolution_years'              => (new Resolutions)->getAllResolutionsYears($data['school'])
@@ -79,6 +80,7 @@ class Materials extends Controller
             'section_site'                  => ' - Resoluções',
             'assets'                        => DIR['ASSETS'],
             'date'                          => SITE['DATE'],
+            'page_exam_years'               => 'materiais/' . $data['school'] . '/resolucoes',
             'year'                          => $data['year'],
             'school'                        => $data['school'],
             'resolutions_disciplines'       => (new Resolutions)->getAllResolutionsDisciplines($data['school'])
@@ -92,7 +94,7 @@ class Materials extends Controller
             'section_site'          => ' - Resoluções',
             'assets'                => DIR['ASSETS'],
             'date'                  => SITE['DATE'],
-            'page_ago'              => 'materiais/' . $data['school'] . '/resolucoes/' . $data['year'],
+            'page_disciplines'      => 'materiais/' . $data['school'] . '/resolucoes/' . $data['year'],
             'year'                  => $data['year'],
             'discipline'            => DISCIPLINE_NAME[$data['discipline']],
             'number_question_url'       => $data['number_question'],
