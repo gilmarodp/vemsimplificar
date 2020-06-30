@@ -13,6 +13,11 @@ class Admin extends Controller
         parent::__construct();
         \session_start();
         $this->model = new \App\Models\Admin;
+
+        $this->twig->addGlobal('section_site', 'Dashboard');
+        $this->twig->addGlobal('admin_data', ['firstName' => $_SESSION['firstName'],
+                                            'lastName' => $_SESSION['lastName'],
+                                            'roles' => $_SESSION['roles']]);
     }
 
     // =================================================================
@@ -25,9 +30,7 @@ class Admin extends Controller
     public function login()
     {
         echo $this->twig->render('admin/login/login.html', [
-            'name_site'                 => SITE['NAME'],
             'section_site'              => 'Login',
-            'assets'                    => DIR['ASSETS']
         ]);
     }
 
@@ -64,16 +67,17 @@ class Admin extends Controller
     {
         $this->model->isLogged();
         echo $this->twig->render('admin/dashboard/home.html', [
-            'name_site'                 => SITE['NAME'],
-            'section_site'              => 'Dashboard',
-            'assets'                    => DIR['ASSETS'],
-            'admin_data'                => ['firstName' => $_SESSION['firstName'],
-                                            'lastName' => $_SESSION['lastName'],
-                                            'roles' => $_SESSION['roles']],
             'message'                   => \identifyThePartOfDayAdmin(date('H'), $_SESSION['firstName'], $_SESSION['lastName']) 
         ]);
     }
 
+    // =================================================================
+    // =================================================================
+    // ============================== ADMIN ============================
+    // =================================================================
+    // =================================================================
+
+    //public function 
 
     // =================================================================
     // =================================================================
@@ -93,13 +97,7 @@ class Admin extends Controller
         $this->model->isLogged();
         $this->model->haveThisRole('reso');
         echo $this->twig->render('admin/dashboard/resolution/addResolution.html', [
-            'name_site'             => SITE['NAME'],
             'action'                => 'adicionar-resolucao/enviar',
-            'section_site'          => 'Dashboard',
-            'assets'                => DIR['ASSETS'],
-            'admin_data'            => ['firstName' => $_SESSION['firstName'],
-                                        'lastName' => $_SESSION['lastName'],
-                                        'roles' => $_SESSION['roles']],
             'schools'               => $this->model->getAllSchools()
         ]);
     }
@@ -144,13 +142,7 @@ class Admin extends Controller
         $this->model->isLogged();
         $this->model->haveThisRole('reso');
         echo $this->twig->render('admin/dashboard/resolution/editResolution.html', [
-            'name_site'             => SITE['NAME'],
             'action'                => 'editar-resolucao/enviar',
-            'section_site'          => 'Dashboard',
-            'assets'                => DIR['ASSETS'],
-            'admin_data'            => ['firstName' => $_SESSION['firstName'],
-                                        'lastName' => $_SESSION['lastName'],
-                                        'roles' => $_SESSION['roles']],
             'schools'               => $this->model->getAllSchools()
         ]);
     }
@@ -196,27 +188,13 @@ class Admin extends Controller
     public function addPost(){
         $this->model->isLogged();
         $this->model->haveThisRole('blog');
-        echo $this->twig->render('admin/dashboard/blog/addPost.html', [
-            'name_site'                 => SITE['NAME'],
-            'section_site'              => 'Dashboard',
-            'assets'                    => DIR['ASSETS'],
-            'admin_data'                => ['firstName' => $_SESSION['firstName'],
-                                            'lastName' => $_SESSION['lastName'],
-                                            'roles' => $_SESSION['roles']],
-        ]);
+        echo $this->twig->render('admin/dashboard/blog/addPost.html', []);
     }
 
     public function editPost(){
         $this->model->isLogged();
         $this->model->haveThisRole('blog');
-        echo $this->twig->render('admin/dashboard/blog/editPost.html', [
-            'name_site'                 => SITE['NAME'],
-            'section_site'              => 'Dashboard',
-            'assets'                    => DIR['ASSETS'],
-            'admin_data'                => ['firstName' => $_SESSION['firstName'],
-                                            'lastName' => $_SESSION['lastName'],
-                                            'roles' => $_SESSION['roles']]
-        ]);
+        echo $this->twig->render('admin/dashboard/blog/editPost.html', []);
     }
 
 
@@ -230,14 +208,7 @@ class Admin extends Controller
     
     public function viewMyData(){
         $this->model->isLogged();
-        echo $this->twig->render('admin/dashboard/myData/viewMyData.html', [
-            'name_site'                 => SITE['NAME'],
-            'section_site'              => 'Dashboard',
-            'assets'                    => DIR['ASSETS'],
-            'admin_data'                => ['firstName' => $_SESSION['firstName'],
-                                            'lastName' => $_SESSION['lastName'],
-                                            'roles' => $_SESSION['roles']]
-        ]);
+        echo $this->twig->render('admin/dashboard/myData/viewMyData.html', []);
     }
 
     public function logout()
