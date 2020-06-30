@@ -19,7 +19,10 @@ class User extends Controller
     public function home ($data)
     {
         echo $this->twig->render('user/home/home.html', [
+            'name_site'             => SITE['NAME'],
             'section_site'          => '',
+            'assets'                => DIR['ASSETS'],
+            'date'                  => SITE['DATE'],
             'message_of_day'        => \identifyThePartOfDay(date('H'))
         ]);
     }
@@ -34,7 +37,10 @@ class User extends Controller
     public function contact ($data)
     {
         echo $this->twig->render('user/contact/contact.html', [
+            'name_site'             => SITE['NAME'],
             'section_site'          => ' - Contato',
+            'assets'                => DIR['ASSETS'],
+            'date'                  => SITE['DATE']
         ]);
     }
 
@@ -74,7 +80,10 @@ class User extends Controller
     public function about ($data)
     {
         echo $this->twig->render('user/about/about.html', [
+            'name_site'             => SITE['NAME'],
             'section_site'          => ' - Sobre',
+            'assets'                => DIR['ASSETS'],
+            'date'                  => SITE['DATE']
         ]);
     }
 }

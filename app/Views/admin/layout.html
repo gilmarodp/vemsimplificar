@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 {% set url_base_admin = "https://www.vemsimplificar.com.br/admin/" %}
-=======
->>>>>>> 93966a1... add default values to twig
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,40 +21,6 @@
                 <hr>
                 
                 <ul class="navbar-nav m1-auto flex-column">
-
-                    {% if 'admin' in admin_data.roles %}
-                        <a>{{ 'CHEFÕES' }}</a>
-                        <li>
-                            <a class="nav-link" href="{{ url_base_admin }}adicionar-escola">Adicionar Escola</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="{{ url_base_admin }}editar-escola">Editar Escola</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="{{ url_base_admin }}remover-escola">Remover Escola</a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a class="nav-link" href="{{ url_base_admin }}adicionar-prova">Adicionar Prova</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="{{ url_base_admin }}editar-prova">Editar Prova</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="{{ url_base_admin }}remover-prova">Remover Prova</a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a class="nav-link" href="{{ url_base_admin }}adicionar-gestores">Adicionar Gestores</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="{{ url_base_admin }}editar-gestores">Editar Gestores</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="{{ url_base_admin }}remover-gestores">Remover Gestores</a>
-                        </li>
-                        <hr>
-                    {% endif %}
 
                     {% if ('admin' in admin_data.roles) or ('reso' in admin_data.roles) %}
                         <a>{{ 'GESTORES DE PROVAS' }}</a>
@@ -91,6 +54,7 @@
                         </li>
                         <hr>
                     {% endif %}
+
 
                     <a>{{ 'OPÇÕES' }}</a>
                     <li class="nav-item">
