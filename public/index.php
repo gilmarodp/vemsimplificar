@@ -63,6 +63,19 @@ $router->get("/",                               "Admin:login");
 $router->post("/validate",                      "Admin:validateAdminLogin");
 $router->get("/home",                           "Admin:home");
 
+$router->get("/adicionar-escola", 				"Admin:addSchool");
+$router->get("/editar-escola", 					"Admin:editSchool");
+$router->get("/remover-escola", 				"Admin:removeSchool");
+
+$router->get("/adicionar-prova", 				"Admin:addExam");
+$router->get("/editar-prova", 					"Admin:editExam");
+$router->get("/remover-prova", 					"Admin:removeExam");
+
+$router->get("/adicionar-gestores", 			"Admin:addExamManager");
+$router->get("/editar-gestores", 				"Admin:editExamManager");
+$router->get("/remover-gestores", 				"Admin:removeExamManager");
+
+
 $router->post("/ajax-adicionar-resolucao",		"Admin:ajaxAddResolution");
 $router->get("/adicionar-resolucao",            "Admin:addResolution");
 $router->post("/adicionar-resolucao/enviar",    "Admin:sendResolution");

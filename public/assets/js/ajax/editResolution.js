@@ -1,7 +1,3 @@
-function insertHtmlContent(id, htmlContent) {
-    editorContentQuestion.instances[id].setData(htmlContent);
-}
-
 $(document).ready(function (){
     $("#name_school").change(function(){
         var name_school = $(this).val();
@@ -55,8 +51,10 @@ $(document).ready(function (){
                     //tinyMCE.get('resolution_question').setContent(result.resolution_question);
                     //$("#content_question").html(result.content_question);
                     //$("#resolution_question").html(result.content_question);
-                    insertHtmlContent("#content_question", result.content_question);
-                    insertHtmlContent("#resolution_question", result.resolution_question);
+                    CKEDITOR.instances.content_question.setData(result.content_question);
+                    CKEDITOR.instances.resolution_question.setData(result.resolution_question);
+                    //insertHtmlContent("#content_question", result.content_question);
+                    //insertHtmlContent("#resolution_question", result.resolution_question);
                 }
             });
         }

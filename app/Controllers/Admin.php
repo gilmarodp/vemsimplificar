@@ -15,10 +15,7 @@ class Admin extends Controller
         $this->model = new \App\Models\Admin;
 
         $this->twig->addGlobal('section_site', 'Dashboard');
-        $this->twig->addGlobal('admin_data', ['firstName' => $_SESSION['firstName'],
-                                            'lastName' => $_SESSION['lastName'],
-                                            'roles' => $_SESSION['roles']]);
-    }
+        }
 
     // =================================================================
     // =================================================================
@@ -67,6 +64,9 @@ class Admin extends Controller
     {
         $this->model->isLogged();
         echo $this->twig->render('admin/dashboard/home.html', [
+            'admin_data' => ['firstName' => $_SESSION['firstName'],
+                             'lastName' => $_SESSION['lastName'],
+                             'roles' => $_SESSION['roles']],
             'message'                   => \identifyThePartOfDayAdmin(date('H'), $_SESSION['firstName'], $_SESSION['lastName']) 
         ]);
     }
@@ -77,7 +77,36 @@ class Admin extends Controller
     // =================================================================
     // =================================================================
 
-    //public function 
+    public function addSchool ()
+    {}
+
+    public function editSchool ()
+    {}
+
+    public function removeSchool ()
+    {}
+
+
+    public function addExam ()
+    {}
+
+    public function editExam ()
+    {}
+
+    public function removeExam ()
+    {}
+
+
+    public function addExamManager ()
+    {}
+
+    public function editExamManager ()
+    {}
+
+    public function removeExamManager ()
+    {}
+
+
 
     // =================================================================
     // =================================================================
@@ -97,6 +126,9 @@ class Admin extends Controller
         $this->model->isLogged();
         $this->model->haveThisRole('reso');
         echo $this->twig->render('admin/dashboard/resolution/addResolution.html', [
+            'admin_data' => ['firstName' => $_SESSION['firstName'],
+                             'lastName' => $_SESSION['lastName'],
+                             'roles' => $_SESSION['roles']],
             'action'                => 'adicionar-resolucao/enviar',
             'schools'               => $this->model->getAllSchools()
         ]);
@@ -142,6 +174,9 @@ class Admin extends Controller
         $this->model->isLogged();
         $this->model->haveThisRole('reso');
         echo $this->twig->render('admin/dashboard/resolution/editResolution.html', [
+            'admin_data' => ['firstName' => $_SESSION['firstName'],
+                             'lastName' => $_SESSION['lastName'],
+                             'roles' => $_SESSION['roles']],
             'action'                => 'editar-resolucao/enviar',
             'schools'               => $this->model->getAllSchools()
         ]);
@@ -188,13 +223,21 @@ class Admin extends Controller
     public function addPost(){
         $this->model->isLogged();
         $this->model->haveThisRole('blog');
-        echo $this->twig->render('admin/dashboard/blog/addPost.html', []);
+        echo $this->twig->render('admin/dashboard/blog/addPost.html', [
+            'admin_data' => ['firstName' => $_SESSION['firstName'],
+                             'lastName' => $_SESSION['lastName'],
+                             'roles' => $_SESSION['roles']]
+        ]);
     }
 
     public function editPost(){
         $this->model->isLogged();
         $this->model->haveThisRole('blog');
-        echo $this->twig->render('admin/dashboard/blog/editPost.html', []);
+        echo $this->twig->render('admin/dashboard/blog/editPost.html', [
+            'admin_data' => ['firstName' => $_SESSION['firstName'],
+                             'lastName' => $_SESSION['lastName'],
+                             'roles' => $_SESSION['roles']]
+        ]);
     }
 
 
