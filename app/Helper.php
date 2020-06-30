@@ -5,6 +5,12 @@ function startTwig()
 	$loader = new \Twig\Loader\FilesystemLoader(DIR['VIEWS']);
 	$twig = new \Twig\Environment($loader);
 
+	$twig->addGlobal('url_base_user', URLPAGE);
+	$twig->addGlobal('url_base_admin', URLPAGE . 'admin/');
+	$twig->addGlobal('name_site', SITE['NAME']);
+	$twig->addGlobal('assets', DIR['ASSETS']);
+	$twig->addGlobal('date', SITE['DATE']);
+
 	return $twig;
 }
 
