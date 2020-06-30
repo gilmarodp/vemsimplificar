@@ -1,3 +1,7 @@
+function insertHtmlContent(id, htmlContent) {
+    editorContentQuestion.instances[id].setData(htmlContent);
+}
+
 $(document).ready(function (){
     $("#name_school").change(function(){
         var name_school = $(this).val();
@@ -47,10 +51,12 @@ $(document).ready(function (){
                 url: "ajax-editar-resolucao",
                 data: "number_question="+number_question+"&author="+$("#author").val()+"&discipline="+$("#discipline").val()+"&exam_year="+$("#exam_year").val()+"&name_school="+$("#name_school").val(),
                 success: function (result){
-                    tinyMCE.get('content_question').setContent(result.content_question);
-                    tinyMCE.get('resolution_question').setContent(result.resolution_question);
+                    //tinyMCE.get('content_question').setContent(result.content_question);
+                    //tinyMCE.get('resolution_question').setContent(result.resolution_question);
                     //$("#content_question").html(result.content_question);
                     //$("#resolution_question").html(result.content_question);
+                    insertHtmlContent("#content_question", result.content_question);
+                    insertHtmlContent("#resolution_question", result.resolution_question);
                 }
             });
         }
