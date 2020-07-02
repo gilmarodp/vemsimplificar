@@ -1,3 +1,7 @@
+span {
+    font-family: "Times New Roma" !important;
+    font-size: 12pt;
+}
 
 .navbar-dark .navbar-nav .nav-link {
 	color: var(--white);
