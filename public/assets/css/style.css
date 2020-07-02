@@ -1,6 +1,10 @@
+p,h1,h2,h3,h4,h5,h6 {
+    color: var(--dark);
+}
 span {
     font-family: "Times New Roma" !important;
     font-size: 12pt;
+    color: var(--dark);
 }
 
 .navbar-dark .navbar-nav .nav-link {
