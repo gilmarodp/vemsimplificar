@@ -1,6 +1,3 @@
-{% extends 'admin/login/layout.html' %}
-
-{% block form_login %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ name_site }} - {{ section_site }}</title>
+    <link rel="shortcut icon" type="imagem/png" href="{{ assets }}img/icone16.png">
     <link rel="stylesheet" href="{{ assets }}css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ assets }}css/style.admin.css">
     <script src="{{ assets }}js/jquery-3.2.1.slim.min.js"></script>
@@ -19,7 +17,7 @@
             <h5 class="text-center">{{ name_site }}</h5>
             <h5 class="text-center">Login</h5>
             <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Seu e-mail" required="required">
+                <input type="email" name="email" class="form-control" placeholder="Seu e-mail" required="required" autofocus>
             </div>
             <div class="form-group">
                 <input type="password" name="password" class="form-control" placeholder="Sua senha" required="required">
@@ -31,4 +29,3 @@
     </div>
 </body>
 </html>
-{% endblock %}
