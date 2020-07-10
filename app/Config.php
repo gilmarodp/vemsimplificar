@@ -2,14 +2,14 @@
 
 require __DIR__ . '/Helper.php';
 
-ini_set('display_errors', 0);
-error_reporting(0);
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 // Pasta Interna
-$folderInternal = "";
+$folderInternal = "vemsimplificar/";
 
 // Endereços importantes
-define('URLPAGE', "https://{$_SERVER['HTTP_HOST']}/{$folderInternal}");
+define('URLPAGE', "http://{$_SERVER['HTTP_HOST']}/{$folderInternal}");
 if (substr($_SERVER['DOCUMENT_ROOT'], -1) == '/') {
 	define('DIRPAGE', "{$_SERVER['DOCUMENT_ROOT']}{$folderInternal}");    
 } else {
@@ -31,8 +31,8 @@ define('DB', [
 	'HOST' 		=> 'localhost',
 	'NAME' 		=> PREFIX_DB . 'database',
 	'CHARSET'	=> 'utf8',
-	'USER' 		=> PREFIX_DB . 'admin',
-	'PASS' 		=> 'N#VihKDakEKS'
+	'USER' 		=> 'root',
+	'PASS' 		=> 'root'
 ]);
 
 // Informações do site
