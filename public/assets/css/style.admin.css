@@ -27,9 +27,14 @@
     max-width: 100%;
 }
 
+a, input[name="author"] {
+    font-size: 15px;
+} 
+
 .navbar-dark .navbar-nav .nav-link {
+    width: 40vh;
     padding-left: 20px;
-    width: 35vh;
+    text-align: left;
 }
 
 .content-panel {
