@@ -16,13 +16,11 @@ $(document).ready(function() {
         ],
         callbacks: {
             onChange: function(content, $editable) {
-                $('input[name="content_question"]').val(content);
+                $('textarea[name="content_question"]').html(content);
             }
         }
     });
-});
-
-$(document).ready(function() {
+    
     $('#resolution_question').summernote({
         placeholder: 'Desenvolva a resolução da questão aqui :)',
         tabsize: 2,
@@ -37,11 +35,13 @@ $(document).ready(function() {
             ['insert', ['link', 'picture', 'hr']],
             ['view', ['fullscreen', 'codeview']],
             ['help', ['help']]
-        ]
+        ],
         callbacks: {
             onChange: function(content, $editable) {
-                $('input[name="resolution_question"]').val(content);
+                $('textarea[name="resolution_question"]').html(content);
             }
         }
     });
+
 });
+
