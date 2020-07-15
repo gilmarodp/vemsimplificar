@@ -121,14 +121,13 @@ class Admin extends Model
     public function setResolutionQuestionEdited (array $dataResolution)
     {
         $sql = "UPDATE `" . PREFIX_DB . "resolutions_questions` SET
-        `content_question` = :content_question, `resolution_question` = :resolution_question, `date_resolution` = :date_resolution
+        `content_question` = :content_question, `resolution_question` = :resolution_question
         WHERE
         `author` = :author AND `exam_year` = :exam_year AND `discipline` = :discipline AND `number_question` = :number_question AND `school` = :name_school";
         
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':content_question', $dataResolution['content_question'], \PDO::PARAM_STR);
         $stmt->bindParam(':resolution_question', $dataResolution['resolution_question'], \PDO::PARAM_STR);
-        $stmt->bindParam(':date_resolution', $dataResolution['date_resolution'], \PDO::PARAM_STR);
         $stmt->bindParam(':author', $dataResolution['author'], \PDO::PARAM_STR);
         $stmt->bindParam(':exam_year', $dataResolution['exam_year'], \PDO::PARAM_STR);
         $stmt->bindParam(':discipline', $dataResolution['discipline'], \PDO::PARAM_STR);
