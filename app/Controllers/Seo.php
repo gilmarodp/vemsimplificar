@@ -20,11 +20,14 @@ class Seo
 
     public function showContent ($pathfile)
     {
+        /*
         $lines = file($pathfile);
 
         foreach($lines as $num => $line){
             echo htmlspecialchars($line) . "<br>\n";
         }
+        */
+        include_once($pathfile);
     }
 }
 
