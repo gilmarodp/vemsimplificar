@@ -4,14 +4,27 @@ namespace App\Controllers;
 
 class Seo
 {
-    public function robots ()
+    public function requests ($data)
     {
-        echo file_get_contents('../robots.txt');
+        $types = ['txt', 'xml', 'css', 'js'];
+        if (file_exists("../{$data['requests']}")) {
+            $pathfile = "../{$data['requests']}";
+            $pathinfo = pathinfo($pathfile);
+            if (in_array($pathinfo['extension'], $types)) {
+                $this->showContent($pathfile);
+            }
+        } else {
+            \header('Location: ' . URLPAGE . 'ooops/404');
+        }
     }
 
-    public function sitemap ()
+    public function showContent ($pathfile)
     {
-        echo file_get_contents('../sitemap.xml');
+        $lines = file($pathfile);
+
+        foreach($lines as $num => $line){
+            echo htmlspecialchars($line) . "<br>\n";
+        }
     }
 }
 

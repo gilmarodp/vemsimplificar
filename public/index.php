@@ -15,8 +15,7 @@ $router->namespace("App\Controllers");
  * SEO
  */
 $router->group(null);
-$router->get("/robots.txt", "Seo:robots");
-$router->get("/sitemap.xml", "Seo:sitemap");
+$router->get("/{requests}", "Seo:requests");
 
 /**
  * Controller: User.php
