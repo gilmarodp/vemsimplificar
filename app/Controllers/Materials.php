@@ -23,6 +23,7 @@ class Materials extends Controller
     {
         echo $this->twig->render('user/materials/materials.html', [
             'section_site'          => ' - Materiais',
+            'description'           => 'Materiais para complementar seus estudos de forma gratuita.',
             'schools'               => (new Resolutions)->getAllSchools()
         ]);
     }
@@ -40,6 +41,7 @@ class Materials extends Controller
     {
         echo $this->twig->render('user/materials/exams/examsYears.html', [
             'section_site'                  => ' - Provas',
+            'description'                   => 'Provas de vestibulares disponilizadas em PDF gratuitamente.',
             'school_name'                   => (new Resolutions)->getSchool($data['school']),
             'exams'                         => (new Exams)->getAllExams($data['school'])
         ]);
@@ -57,7 +59,8 @@ class Materials extends Controller
     {
         echo $this->twig->render('user/materials/resolutions/resolutionsYears.html', [
             'section_site'                  => ' - Resoluções',
-            'page_exams'                     => 'materiais/',
+            'description'                   => 'Materiais para complementar seus estudos de forma gratuita.',
+            'page_exams'                    => 'materiais/',
             'school'                        => $data['school'],
             'school_name'                   => (new Resolutions)->getSchool($data['school']),
             'resolution_years'              => (new Resolutions)->getAllResolutionsYears($data['school'])
@@ -68,6 +71,7 @@ class Materials extends Controller
     {
         echo $this->twig->render('user/materials/resolutions/resolutionsDisciplines.html', [
             'section_site'                  => ' - Resoluções',
+            'description'                   => 'Materiais para complementar seus estudos de forma gratuita.',
             'page_exam_years'               => 'materiais/' . $data['school'] . '/resolucoes',
             'year'                          => $data['year'],
             'school'                        => $data['school'],
@@ -79,6 +83,7 @@ class Materials extends Controller
     {
         echo $this->twig->render('user/materials/resolutions/resolutionQuestion.html', [
             'section_site'          => ' - Resoluções',
+            'description'           => 'Materiais para complementar seus estudos de forma gratuita.',
             'page_disciplines'      => 'materiais/' . $data['school'] . '/resolucoes/' . $data['year'],
             'year'                  => $data['year'],
             'discipline'            => DISCIPLINE_NAME[$data['discipline']],
