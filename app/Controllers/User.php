@@ -20,6 +20,7 @@ class User extends Controller
     {
         echo $this->twig->render('user/home/home.html', [
             'section_site'          => '',
+            'description'           => 'Plataforma gratuita de estudos. Disponibilizamos provas, resoluções comentadas, curiosidades e dicas sobre algumas áreas do conhecimento.',
             'message_of_day'        => \identifyThePartOfDay(date('H'))
         ]);
     }
@@ -35,6 +36,7 @@ class User extends Controller
     {
         echo $this->twig->render('user/contact/contact.html', [
             'section_site'          => ' - Contato',
+            'description'           => 'Venha fazer parte do nosso grupo de estudos no Discord ou entre em contato conosco, através do E-mail ou até mesmo no Instagram.'
         ]);
     }
 
@@ -75,6 +77,7 @@ class User extends Controller
     {
         echo $this->twig->render('user/about/about.html', [
             'section_site'          => ' - Sobre',
+            'description'           => 'Descubra mais sobre nós, qual é o nosso objetivo com o projeto e quem coordena a plataforma.'
         ]);
     }
 }
