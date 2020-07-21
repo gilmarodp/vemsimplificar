@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168514493-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-168514493-2');
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ description }}">
@@ -67,7 +76,7 @@
     <div class="col-sm-12 footer">
         <footer class="page-footer font-small">
             <center>
-                <p style="color: var(--white);">&copy {{ name_site }} {{ date }}</p>
+                <p style="color: var(--white); text-align: center !important;">&copy {{ name_site }} {{ date }}</p>
             </center>
         </footer>
     </div>
