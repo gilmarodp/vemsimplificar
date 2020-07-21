@@ -11,5 +11,5 @@ Allow: /materiais
 Allow: /contato
 Allow: /sobre
 
-Sitemap: https://www.vemsimplificar.com.br/sitemap.xml
+Sitemap: https://www.vemsimplificar.com.br/public/sitemap.xml
 
