@@ -1,4 +1,4 @@
-let folderInternal = "/vemsimplificar";
+let folderInternal = "";
 
 let URLBASE = window.location.protocol + "//" + window.location.host + folderInternal;
 
