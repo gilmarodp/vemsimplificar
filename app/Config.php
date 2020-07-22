@@ -7,6 +7,7 @@ error_reporting(0);
 
 // Pasta Interna
 $folderInternal = "";
+define('FOLDERINTERNAL', "/" . $folderInternal);
 
 // Endereços importantes
 define('URLPAGE', "https://{$_SERVER['HTTP_HOST']}/{$folderInternal}");
