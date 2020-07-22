@@ -1,47 +1,51 @@
-$(document).ready(function() {
-    $('#content_question').summernote({
-        placeholder: 'Copie o enunciado da questão aqui :)',
-        tabsize: 2,
-        height: 200,
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'italic', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['height', ['height']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'hr']],
-            ['view', ['fullscreen', 'codeview']],
-            ['help', ['help']]
-        ],
-        callbacks: {
-            onChange: function(content, $editable) {
-                $('textarea[name="content_question"]').html(content);
-            }
-        }
-    });
-    
-    $('#resolution_question').summernote({
-        placeholder: 'Desenvolva a resolução da questão aqui :)',
-        tabsize: 2,
-        height: 200,
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'italic', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['height', ['height']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'hr']],
-            ['view', ['fullscreen', 'codeview']],
-            ['help', ['help']]
-        ],
-        callbacks: {
-            onChange: function(content, $editable) {
-                $('textarea[name="resolution_question"]').html(content);
-            }
-        }
+let folderInternal = "/vemsimplificar";
+
+let URLBASE = window.location.protocol + "//" + window.location.host + folderInternal;
+
+$(document).ready(function(){
+    tinymce.init({
+            selector: '#content_question',
+            height: 300,
+            plugins: [
+                "advlist autolink lists link image charmap print preview anchor",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table paste imagetools wordcount"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code",
+            image_adv_tab: true,
+
+            external_filemanager_path: URLBASE + "/public/assets/js/filemanager/",
+            filemanager_title: "Responsive Filemanager",
+            external_plugins: { "filemanager" : "../filemanager/plugin.min.js" },
+            visualblocks_default_state: true,
+
+            style_formats_autohide: true,
+            style_formats_merge: true,
+            relative_urls : false,
+            remove_script_host : false,
+            convert_urls : true
     });
 
+    tinymce.init({
+            selector: '#resolution_question',
+            height: 300,
+            plugins: [
+                "advlist autolink lists link image charmap print preview anchor",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table paste imagetools wordcount"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code",
+            image_adv_tab: true,
+
+            external_filemanager_path: URLBASE + "/public/assets/js/filemanager/",
+            filemanager_title: "Responsive Filemanager",
+            external_plugins: { "filemanager" : "../filemanager/plugin.min.js" },
+            visualblocks_default_state: true,
+
+            style_formats_autohide: true,
+            style_formats_merge: true,
+            relative_urls : false,
+            remove_script_host : false,
+            convert_urls : true
+    });
 });
-

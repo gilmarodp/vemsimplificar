@@ -47,16 +47,16 @@ $(document).ready(function (){
                 url: "ajax-editar-resolucao",
                 data: "number_question="+number_question+"&author="+$("#author").val()+"&discipline="+$("#discipline").val()+"&exam_year="+$("#exam_year").val()+"&name_school="+$("#name_school").val(),
                 success: function (result){
-                    //tinyMCE.get('content_question').setContent(result.content_question);
-                    //tinyMCE.get('resolution_question').setContent(result.resolution_question);
+                    tinyMCE.get('content_question').setContent(result.content_question);
+                    tinyMCE.get('resolution_question').setContent(result.resolution_question);
                     //$("#content_question").html(result.content_question);
                     //$("#resolution_question").html(result.content_question);
                     //CKEDITOR.instances.content_question.setData(result.content_question);
                     //CKEDITOR.instances.resolution_question.setData(result.resolution_question);
                     //insertHtmlContent("#content_question", result.content_question);
                     //insertHtmlContent("#resolution_question", result.resolution_question);
-                    $('#content_question').summernote('pasteHTML', result.content_question);
-                    $('#resolution_question').summernote('pasteHTML', result.resolution_question);
+                    //$('#content_question').summernote('pasteHTML', result.content_question);
+                    //$('#resolution_question').summernote('pasteHTML', result.resolution_question);
                     //$('textarea[name="content_question"]').html(result.content_question);
                 }
             });

@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 
 // Pasta Interna
 $folderInternal = "vemsimplificar/";
+define('FOLDERINTERNAL', "/" . $folderInternal);
 
 // Endereços importantes
 define('URLPAGE', "http://{$_SERVER['HTTP_HOST']}/{$folderInternal}");
