@@ -35,7 +35,7 @@ CoffeeCode é um conjunto de pequenos e otimizados componentes PHP para tarefas 
 Paginator is available via Composer:
 
 ```bash
-"coffeecode/paginator": "^1.0"
+"coffeecode/paginator": "1.0.*"
 ```
 
 or run
@@ -72,6 +72,12 @@ echo $pager->render();
     <a class='paginator_item' title="Página 4" href="?page=4">4</a>
     <a class='paginator_item' title="Última página" href="?page=10">>></a>
 </nav>
+````
+
+##### Dynamic First And Last Page
+
+````php
+$pager->render(null, false);
 ````
 
 ## Contributing
