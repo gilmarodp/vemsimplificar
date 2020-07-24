@@ -13,8 +13,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ description }}">
-    <meta name="keywords" content="vem simplificar ifce if ensino médio estudos provas comentadas resoluções soluções conteúdo gratuito">
-    <title>{{ name_site }}{{ section_site }}</title>
+    <meta name="keywords" content="vem simplificar,ifce,if,ensino médio,estudos,provas,resoluções,resoluções comentadas,soluções,conteúdo gratuito,como passar no ifce">
+    <title>{{ name_site }}{{ section_site|raw }}</title>
     <link rel="icon" type="imagem/x-icon" href="{{ assets }}img/logo.ico">
     <link rel="shortcut icon" type="imagem/x-icon" href="{{ assets }}img/logo.ico">
     <link rel="stylesheet" type="text/css" href="{{ assets }}css/bootstrap.min.css">
@@ -22,19 +22,23 @@
 
     <!-- Facebook -->
     <meta property="og:url" content="{{ url_base_user }}">
-    <meta property="og:title" content="{{ name_site}}">
+    <meta property="og:title" content="{{ name_site }}{{ section_site }}">
     <meta property="og:description" content="{{ description }}">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ assets }}img/icone100.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="100">
     <meta property="og:image:height" content="100">
+
+    <meta name="robot" content="Index,Follow">
+    <meta name="language" content="pt-br">
+    <meta name="rating" content="general">
 </head>
 <body>
     <div class="menu">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav-menu">
           <a class="navbar-brand" href="{{ url_base_user }}">
-            <img src="{{ assets }}img/logo.svg"> {{ name_site }}
+            <img src="{{ assets }}img/logo.svg"> {{ name_site_logo }}
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -73,13 +77,52 @@
       </div>
     </div><br>
 
-    <div class="col-sm-12 footer">
-        <footer class="page-footer font-small">
-            <center>
-                <p style="color: var(--white); text-align: center !important;">&copy {{ name_site }} {{ date }}</p>
-            </center>
-        </footer>
+    <section id="footer">
+    <div class="container">
+      <div class="row text-center text-xs-center text-sm-left text-md-left">
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <a class="navbar-brand" href="{{ url_base_user }}">
+            <h5>Vem Simplificar <img src="{{ assets }}img/logo.svg"></h5>
+          </a>
+          <ul class="list-unstyled quick-links">
+            <li><a>Contato:<br>contato@vemsimplificar.com.br</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Redes Sociais</h5>
+          <ul class="list-unstyled quick-links">
+            <li>
+              <a href="{{ url_base_user }}contato#discord">
+                Discord<br>
+                <img width="40" src="{{ assets }}img/footer/discord.ico">
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/vemsimplificar" target="_blank">
+                Instagram<br>
+                <img width="40" src="{{ assets }}img/footer/instagram.ico">
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Links Importantes</h5>
+          <ul class="list-unstyled quick-links">
+            <li><a href="{{ url_base_user }}">Inicio</a></li>
+            <li><a href="{{ url_base_user }}materiais">Materiais</a></li>
+            <li><a href="{{ url_base_user }}contato">Contato</a></li>
+            <li><a href="{{ url_base_user }}sobre">Sobre</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+          <p class="h6">© {{ name_site_logo }} - {{ date }}</p>
+        </div>
+        <hr>
+      </div>  
     </div>
+  </section>
 
     <!-- JavaScript: jQuery, Bootstrap and Popper -->
     <script src="{{ assets }}js/jquery-3.5.1.js"></script>

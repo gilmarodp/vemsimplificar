@@ -8,6 +8,7 @@ function startTwig()
 	$twig->addGlobal('url_base_user', URLPAGE);
 	$twig->addGlobal('url_base_admin', URLPAGE . 'admin/');
 	$twig->addGlobal('name_site', SITE['NAME']);
+	$twig->addGlobal('name_site_logo', SITE['NAME']);
 	$twig->addGlobal('assets', DIR['ASSETS']);
 	$twig->addGlobal('date', SITE['DATE']);
 

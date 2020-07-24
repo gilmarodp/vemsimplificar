@@ -39,10 +39,12 @@ class Materials extends Controller
 
     public function exams($data)
     {
+        $schoolData = (new Resolutions)->getSchool($data['school']);
         echo $this->twig->render('user/materials/exams/examsYears.html', [
-            'section_site'                  => ' - Provas',
+            'name_site'                     => '',
+            'section_site'                  => 'Prova do(a) ' . $schoolData->name,
             'description'                   => 'Provas de vestibulares disponilizadas em PDF gratuitamente.',
-            'school_name'                   => (new Resolutions)->getSchool($data['school']),
+            'school_name'                   => $schoolData,
             'exams'                         => (new Exams)->getAllExams($data['school'])
         ]);
     }
@@ -57,20 +59,24 @@ class Materials extends Controller
 
     public function resolutionsYears($data)
     {
+        $schoolData = (new Resolutions)->getSchool($data['school']);
         echo $this->twig->render('user/materials/resolutions/resolutionsYears.html', [
-            'section_site'                  => ' - Resoluções',
+            'name_site'                     => '',
+            'section_site'                  => 'Resoluções comentadas das provas do(a) ' . $schoolData->name,
             'description'                   => 'Materiais para complementar seus estudos de forma gratuita.',
             'page_exams'                    => 'materiais/',
             'school'                        => $data['school'],
-            'school_name'                   => (new Resolutions)->getSchool($data['school']),
+            'school_name'                   => $schoolData,
             'resolution_years'              => (new Resolutions)->getAllResolutionsYears($data['school'])
         ]);
     }
 
     public function resolutionsDisciplines($data)
     {
+        $schoolData = (new Resolutions)->getSchool($data['school']);
         echo $this->twig->render('user/materials/resolutions/resolutionsDisciplines.html', [
-            'section_site'                  => ' - Resoluções',
+            'name_site'                     => '',
+            'section_site'                  => 'Resoluções comentadas das provas do(a) ' . $schoolData->name,
             'description'                   => 'Materiais para complementar seus estudos de forma gratuita.',
             'page_exam_years'               => 'materiais/' . $data['school'] . '/resolucoes',
             'year'                          => $data['year'],
@@ -81,8 +87,15 @@ class Materials extends Controller
 
     public function resolutionQuestion($data)
     {
+        $resolutionQuestion = (new Resolutions)->getAllResolutionsQuestions(
+            $data['year'],
+            DISCIPLINE_ID[$data['discipline']],
+            $data['number_question']
+        );
+
         echo $this->twig->render('user/materials/resolutions/resolutionQuestion.html', [
-            'section_site'          => ' - Resoluções',
+            'name_site'             => '',
+            'section_site'          => html_entity_decode(strip_tags($resolutionQuestion->content_question)),
             'description'           => 'Materiais para complementar seus estudos de forma gratuita.',
             'page_disciplines'      => 'materiais/' . $data['school'] . '/resolucoes/' . $data['year'],
             'year'                  => $data['year'],
@@ -92,11 +105,7 @@ class Materials extends Controller
                 $data['year'],
                 DISCIPLINE_ID[$data['discipline']]
             ),
-            'resolution'            => (new Resolutions)->getAllResolutionsQuestions(
-                $data['year'],
-                DISCIPLINE_ID[$data['discipline']],
-                $data['number_question']
-            )
+            'resolution'            => $resolutionQuestion
        ]);
     }
 }
