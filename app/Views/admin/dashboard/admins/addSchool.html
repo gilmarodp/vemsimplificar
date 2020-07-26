@@ -5,63 +5,56 @@
         <fieldset>
             <legend><h2>Adicionar Escola</h2></legend>
 
-            <div class="form-group row">
-                <label for="staticAuthor" class="col-sm-2 col-form-label">Autor:</label>
-                <div class="col-sm-10">
-                  <input type="text" name="author" readonly="" class="form-control-plaintext" id="staticAuthor" value="{{ admin_data.firstName }} {{ admin_data.lastName }}">
-                </div>
+            <div class="form-group">
+                <label for="name_school">Nome da(s) escola(s):</label>
+                <input type="text" class="form-control" id="name_school" name="name_school" placeholder="Exemplo: IFCE Fortaleza">
             </div>
 
             <div class="form-group">
-                <label for="name_school">Prova da(s) Escola(s)</label>
-                <select name="name_school" class="form-control" id="name_school">
-                    <option value="">Selecione a Escola</option>
-                    {% for school in schools %}
-                    <option value="{{ school.codename }}">{{ school.name }}</option>
-                    {% endfor %}
-                </select>
+                <label for="codename_school">Codename da escola:</label>
+                <input type="text" class="form-control" id="codename_school" name="codename_school" placeholder="Exemplo: ifcefor">
             </div>
 
             <div class="form-group">
-                <label for="exam_year">Selecione o Ano da Prova</label>
-                <select name="exam_year" class="form-control" id="exam_year">
-                    <option value="">Selecione o Ano</option>
-                    
-                </select>
+                <label for="number_disciplines">Quantidade de disciplinas:</label>
+                <input type="number" min="1" class="form-control" id="number_disciplines" name="number_disciplines">
             </div>
 
-
-            <div class="form-group">
-                <label for="discipline">Selecione a Disciplina</label>
-                <select name="discipline" class="form-control" id="discipline">
-                    <option value="">Selecione a Disciplina</option>
-                </select>
+            <div class="form-group" id="divInputDisciplines">
+                
             </div>
 
             <div class="form-group">
-                <label for="number_question">Número da Questão</label>
-                <select class="form-control" name="number_question" id="number_question">
-                    <option value="">Selecione o Número da Questão</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="content_question">Enunciado</label>
-                <textarea name="content_question" class="form-control" id="content_question" rows="15"></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="resolution_question">Resolução</label>
-                <textarea name="resolution_question" class="form-control" id="resolution_question" rows="15"></textarea>
-            </div>
-
-            <br>
-
-            <div class="form-group">
-                <button type="submit" class="btn btn-success form-control">Enviar Resolução</button>
+                <button type="submit" class="btn btn-success form-control">Enviar Escola(s)</button>
                 <br><br> 
             </div>
 
         </fieldset>
     </form>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#number_disciplines').change(function() {
+            $('#divInputDisciplines').html('');
+            var number_disciplines = $(this).val();
+            if (number_disciplines > 0) {
+                var htmlContent = '';
+                for (var i = 1; i <= number_disciplines; i++) {
+                    htmlContent += '<label for="discipline'+i+'">Disciplina '+i+':</label>';
+                    htmlContent += '<input type="text" class="form-control" id="discipline'+i+'" name="discipline[]" placeholder="Nome da Disciplina (Ex.: Matemática)">';
+                    htmlContent += '</input>';
+
+                    htmlContent += '<input type="text" class="form-control" id="absolute_name_discipline'+i+'" name="name_normal[]" placeholder="Nome Absoluto da Disciplina (Ex.: matematica)">';
+                    htmlContent += '</input>';
+
+                    htmlContent += '<input type="text" class="form-control" id="number_questions'+i+'" name="number_questions[]" placeholder="Quantidade de Questões (Ex.: 10)">';
+                    htmlContent += '</input>';
+                }
+                $('#divInputDisciplines').append(htmlContent);
+            }
+        });
+    });
+</script>
 {% endblock %}

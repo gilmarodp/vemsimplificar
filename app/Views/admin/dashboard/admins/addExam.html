@@ -1,0 +1,42 @@
+{% extends 'admin/layout.html' %}
+
+{% block content %}
+    <form action="{{ url_base_admin }}{{ action }}" method="POST">
+        <fieldset>
+            <legend><h2>Adicionar Prova</h2></legend>
+
+            <div class="form-group">
+                <label for="codename_school">Codename da escola:</label>
+                <input type="text" class="form-control" id="codename_school" name="codename_school" placeholder="Exemplo: ifcefor">
+            </div>
+
+            <div class="form-group">
+                <label for="exam_year">Ano da Prova:</label>
+                <input type="text" class="form-control" id="exam_year" name="exam_year" placeholder="Exemplo: 2020 ou (2020-1 ou 2020-2) se for por semestre">
+            </div>
+
+            <div class="form-group">
+                <label for="link">Link da Prova</label>
+                <input type="text" min="1" class="form-control" id="link" name="link">
+                <a type="button" id="buttonTest" class="btn btn-primary" style="color: white;" target="_blank">Testar Link</a>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success form-control">Enviar Prova</button>
+                <br><br> 
+            </div>
+
+        </fieldset>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#link').change(function() {
+            $('#buttonTest')
+                .attr('href', $(this).val());
+        });
+    });
+</script>
+{% endblock %}

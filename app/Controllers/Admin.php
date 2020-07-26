@@ -78,17 +78,96 @@ class Admin extends Controller
     // =================================================================
 
     public function addSchool ()
-    {}
+    {
+        $this->model->isLogged();
+        $this->model->haveThisRole('admin');
+        echo $this->twig->render('admin/dashboard/admins/addSchool.html', [
+            'admin_data'    => ['firstName' => $_SESSION['firstName'],
+                                'lastName' => $_SESSION['lastName'],
+                                'roles' => $_SESSION['roles']],
+            'action'        => 'adicionar-escola/enviar'
+        ]);
+    }
+
+    public function sendSchool ()
+    {
+        $this->model->isLogged();
+        if (
+            isset($_POST['name_school']) && !empty($_POST['name_school']) &&
+            isset($_POST['codename_school']) && !empty($_POST['codename_school']) &&
+            isset($_POST['number_disciplines']) && !empty($_POST['number_disciplines']) &&
+            isset($_POST['discipline']) && !empty($_POST['discipline']) &&
+            isset($_POST['name_normal']) && !empty($_POST['name_normal']) &&
+            isset($_POST['number_questions']) && !empty($_POST['number_questions'])
+        ) {
+            $dataSchool = [
+                'name_school'       => $_POST['name_school'],
+                'codename_school'   => $_POST['codename_school'],
+                'number_disciplines'=> $_POST['number_disciplines'],
+                'discipline'        => $_POST['discipline'],
+                'name_normal'       => $_POST['name_normal'],
+                'number_questions'  => $_POST['number_questions']
+            ];
+        } else {\header('Location: ' . URLPAGE . 'admin/home');}
+
+        $this->model->setSchool($dataSchool);
+        \header('Location: ' . URLPAGE . 'admin/adicionar-escola');
+
+    }
 
     public function editSchool ()
-    {}
+    {
+        $this->model->isLogged();
+        $this->model->haveThisRole('admin');
+        echo $this->twig->render('admin/dashboard/admins/editSchool.html', [
+            'admin_data' => ['firstName' => $_SESSION['firstName'],
+                             'lastName' => $_SESSION['lastName'],
+                             'roles' => $_SESSION['roles']],
+        ]);
+    }
 
     public function removeSchool ()
-    {}
+    {
+        $this->model->isLogged();
+        $this->model->haveThisRole('admin');
+        echo $this->twig->render('admin/dashboard/admins/removeSchool.html', [
+            'admin_data' => ['firstName' => $_SESSION['firstName'],
+                             'lastName' => $_SESSION['lastName'],
+                             'roles' => $_SESSION['roles']],
+        ]);
+    }
 
 
     public function addExam ()
-    {}
+    {
+        $this->model->isLogged();
+        $this->model->haveThisRole('admin');
+        echo $this->twig->render('admin/dashboard/admins/addExam.html', [
+            'admin_data' => ['firstName' => $_SESSION['firstName'],
+                             'lastName' => $_SESSION['lastName'],
+                             'roles' => $_SESSION['roles']],
+            'action'        => 'adicionar-prova/enviar'
+        ]);
+    }
+
+    public function sendExam ()
+    {
+        $this->model->isLogged();
+        if (
+            isset($_POST['codename_school']) && !empty($_POST['codename_school']) &&
+            isset($_POST['exam_year']) && !empty($_POST['exam_year']) &&
+            isset($_POST['link']) && !empty($_POST['link'])
+        )
+        {
+            $dataExam = [
+                'codename_school'   => $_POST['codename_school'],
+                'exam_year'         => $_POST['exam_year'],
+                'link'              => $_POST['link']
+            ];
+        } else {\header('Location: ' . URLPAGE . 'admin/home');}
+        $this->model->setExam($dataExam);
+        \header('Location: ' . URLPAGE . 'admin/adicionar-escola');
+    }
 
     public function editExam ()
     {}

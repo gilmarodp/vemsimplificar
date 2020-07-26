@@ -46,3 +46,14 @@ function identifyThePartOfDayAdmin(string $hour, string $first_name, string $las
 	} 
 }
 
+function returnIdFromDiscipline (array $data)
+{
+	$disciplinesData = (new \App\Models\Resolutions)->getAllResolutionsDisciplines($data['school']);
+	foreach ($disciplinesData as $key => $value) {
+        if ($data['discipline'] == $value['name_normal']) {
+            $disciplineId = array_search($value, $disciplinesData);
+        }
+    }
+
+    return (string) $disciplineId;
+}

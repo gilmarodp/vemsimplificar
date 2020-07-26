@@ -98,6 +98,46 @@ class Admin extends Model
         return $disciplines;
     }
 
+    public function setSchool (array $dataSchool)
+    {
+        $disciplines = new \stdClass;
+        for ($i=1; $i <= (int) $dataSchool['number_disciplines']; $i++) { 
+            $disciplines->{$i} = [
+                'discipline'        => $dataSchool['discipline'][$i - 1],
+                'name_normal'       => $dataSchool['name_normal'][$i - 1],
+                'number_questions'  => $dataSchool['number_questions'][$i - 1]
+            ];
+        }
+        $disciplines = json_encode($disciplines);
+
+        $sql = "INSERT INTO " . PREFIX_DB . "schools
+        (`codename`, `name`, `disciplines`)
+        VALUES
+        (:codename_school, :name_school, :disciplines)";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':codename_school', $dataSchool['codename_school'], \PDO::PARAM_STR);
+        $stmt->bindParam(':name_school', $dataSchool['name_school'], \PDO::PARAM_STR);
+        $stmt->bindParam(':disciplines', $disciplines, \PDO::PARAM_STR);
+
+        $stmt->execute();
+    }
+
+    public function setExam (array $dataExam)
+    {
+        $sql = "INSERT INTO " . PREFIX_DB . "exams
+        (`year`, `link`, `school`)
+        VALUES
+        (:exam_year, :link, :codename_school)";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':exam_year', $dataExam['exam_year'], \PDO::PARAM_STR);
+        $stmt->bindParam(':link', $dataExam['link'], \PDO::PARAM_STR);
+        $stmt->bindParam(':codename_school', $dataExam['codename_school'], \PDO::PARAM_STR);
+
+        $stmt->execute();
+    }
+
     public function setResolutionQuestion (array $dataResolution)
     {
         $sql = "INSERT INTO " . PREFIX_DB . "resolutions_questions

@@ -41,7 +41,7 @@ class Resolutions extends Model
     
     public function getAllResolutionsYears(string $school)
     {
-        $sql = "SELECT `year` FROM " . PREFIX_DB . "resolutions_years WHERE `school` = :school AND (`status` = 'completo' OR `status` = 'completando')";
+        $sql = "SELECT `year` FROM " . PREFIX_DB . "exams WHERE `school` = :school";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':school', $school, \PDO::PARAM_STR);
         $stmt->execute();

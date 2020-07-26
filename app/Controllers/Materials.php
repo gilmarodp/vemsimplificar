@@ -87,9 +87,10 @@ class Materials extends Controller
 
     public function resolutionQuestion($data)
     {
+        $disciplineId = \returnIdFromDiscipline($data);
         $resolutionQuestion = (new Resolutions)->getAllResolutionsQuestions(
             $data['year'],
-            DISCIPLINE_ID[$data['discipline']],
+            $disciplineId,
             $data['number_question']
         );
 
@@ -100,10 +101,10 @@ class Materials extends Controller
             'page_disciplines'      => 'materiais/' . $data['school'] . '/resolucoes/' . $data['year'],
             'year'                  => $data['year'],
             'discipline'            => DISCIPLINE_NAME[$data['discipline']],
-            'number_question_url'       => $data['number_question'],
+            'number_question_url'   => $data['number_question'],
             'number_questions'      => (new Resolutions)->getNumberQuestions(
                 $data['year'],
-                DISCIPLINE_ID[$data['discipline']]
+                $disciplineId
             ),
             'resolution'            => $resolutionQuestion
        ]);
