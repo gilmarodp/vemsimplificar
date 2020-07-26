@@ -15,7 +15,7 @@ class AjaxData extends Model
             !isset($section['discipline']) && empty($section['discipline'])
         )
         {
-			$sql = "SELECT `year` FROM `" . PREFIX_DB . "resolutions_years` INNER JOIN `" . PREFIX_DB . "schools` ON `" . PREFIX_DB . "resolutions_years`.`school` = `" . PREFIX_DB . "schools`.`codename` WHERE `" . PREFIX_DB . "schools`.`codename` = :codename";
+			$sql = "SELECT `year` FROM `" . PREFIX_DB . "exams` INNER JOIN `" . PREFIX_DB . "schools` ON `" . PREFIX_DB . "exams`.`school` = `" . PREFIX_DB . "schools`.`codename` WHERE `" . PREFIX_DB . "schools`.`codename` = :codename";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindParam(":codename", $section['name_school'], \PDO::PARAM_STR);
 			$stmt->execute();
@@ -38,7 +38,7 @@ class AjaxData extends Model
             !isset($section['discipline']) && empty($section['discipline'])
         )
         {
-			$sql = "SELECT `disciplines` FROM `" . PREFIX_DB . "schools` INNER JOIN `" . PREFIX_DB . "resolutions_years` ON `" . PREFIX_DB . "schools`.`codename` = `" . PREFIX_DB . "resolutions_years`.`school` WHERE `" . PREFIX_DB . "resolutions_years`.`year` = :exam_year";
+			$sql = "SELECT `disciplines` FROM `" . PREFIX_DB . "schools` INNER JOIN `" . PREFIX_DB . "exams` ON `" . PREFIX_DB . "schools`.`codename` = `" . PREFIX_DB . "exams`.`school` WHERE `" . PREFIX_DB . "exams`.`year` = :exam_year";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindParam(":exam_year", $section['exam_year'], \PDO::PARAM_STR);
 			$stmt->execute();
@@ -58,7 +58,7 @@ class AjaxData extends Model
             isset($section['discipline']) && !empty($section['discipline'])
         )
         {
-            $sql = "SELECT `disciplines` FROM `" . PREFIX_DB . "schools` INNER JOIN `" . PREFIX_DB . "resolutions_years` ON `" . PREFIX_DB . "schools`.`codename` = `" . PREFIX_DB . "resolutions_years`.`school` WHERE `" . PREFIX_DB . "resolutions_years`.`year` = :exam_year";
+            $sql = "SELECT `disciplines` FROM `" . PREFIX_DB . "schools` INNER JOIN `" . PREFIX_DB . "exams` ON `" . PREFIX_DB . "schools`.`codename` = `" . PREFIX_DB . "exams`.`school` WHERE `" . PREFIX_DB . "exams`.`year` = :exam_year";
             $stmt = $this->pdo->prepare($sql);
 			$stmt->bindParam(":exam_year", $section['exam_year'], \PDO::PARAM_STR);
 			$stmt->execute();
@@ -85,7 +85,7 @@ class AjaxData extends Model
             !isset($section['number_question']) && empty($section['number_question']) 
         )
         {
-			$sql = "SELECT `year` FROM `" . PREFIX_DB . "resolutions_years` INNER JOIN `" . PREFIX_DB . "schools` ON `" . PREFIX_DB . "resolutions_years`.`school` = `" . PREFIX_DB . "schools`.`codename` WHERE `" . PREFIX_DB . "schools`.`codename` = :codename";
+			$sql = "SELECT `year` FROM `" . PREFIX_DB . "exams` INNER JOIN `" . PREFIX_DB . "schools` ON `" . PREFIX_DB . "exams`.`school` = `" . PREFIX_DB . "schools`.`codename` WHERE `" . PREFIX_DB . "schools`.`codename` = :codename";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindParam(":codename", $section['name_school'], \PDO::PARAM_STR);
 			$stmt->execute();
@@ -109,7 +109,7 @@ class AjaxData extends Model
             !isset($section['number_question']) && empty($section['number_question']) 
         )
         {
-			$sql = "SELECT `disciplines` FROM `" . PREFIX_DB . "schools` INNER JOIN `" . PREFIX_DB . "resolutions_years` ON `" . PREFIX_DB . "schools`.`codename` = `" . PREFIX_DB . "resolutions_years`.`school` WHERE `" . PREFIX_DB . "resolutions_years`.`year` = :exam_year";
+			$sql = "SELECT `disciplines` FROM `" . PREFIX_DB . "schools` INNER JOIN `" . PREFIX_DB . "exams` ON `" . PREFIX_DB . "schools`.`codename` = `" . PREFIX_DB . "exams`.`school` WHERE `" . PREFIX_DB . "exams`.`year` = :exam_year";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindParam(":exam_year", $section['exam_year'], \PDO::PARAM_STR);
 			$stmt->execute();
@@ -130,7 +130,7 @@ class AjaxData extends Model
             !isset($section['number_question']) && empty($section['number_question']) 
         )
         {
-            $sql = "SELECT `disciplines` FROM `" . PREFIX_DB . "schools` INNER JOIN `" . PREFIX_DB . "resolutions_years` ON `" . PREFIX_DB . "schools`.`codename` = `" . PREFIX_DB . "resolutions_years`.`school` WHERE `" . PREFIX_DB . "resolutions_years`.`year` = :exam_year";
+            $sql = "SELECT `disciplines` FROM `" . PREFIX_DB . "schools` INNER JOIN `" . PREFIX_DB . "exams` ON `" . PREFIX_DB . "schools`.`codename` = `" . PREFIX_DB . "exams`.`school` WHERE `" . PREFIX_DB . "exams`.`year` = :exam_year";
             $stmt = $this->pdo->prepare($sql);
 			$stmt->bindParam(":exam_year", $section['exam_year'], \PDO::PARAM_STR);
 			$stmt->execute();
