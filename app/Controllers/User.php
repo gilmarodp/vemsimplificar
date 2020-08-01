@@ -19,7 +19,7 @@ class User extends Controller
     public function home ($data)
     {
         echo $this->twig->render('user/home/home.html', [
-            'section_site'          => ' - Plataforma de Estudos Gratuita',
+            'section_site'          => ' - Plataforma de Estudos',
             'description'           => 'Plataforma gratuita de estudos. Disponibilizamos provas, resoluções comentadas, curiosidades e dicas sobre algumas áreas do conhecimento.',
             'message_of_day'        => \identifyThePartOfDay(date('H'))
         ]);
