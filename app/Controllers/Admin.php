@@ -82,10 +82,10 @@ class Admin extends Controller
         $this->model->isLogged();
         $this->model->haveThisRole('admin');
         echo $this->twig->render('admin/dashboard/admins/addSchool.html', [
-            'admin_data'    => ['firstName' => $_SESSION['firstName'],
-                                'lastName' => $_SESSION['lastName'],
-                                'roles' => $_SESSION['roles']],
-            'action'        => 'adicionar-escola/enviar'
+            'admin_data'        => ['firstName' => $_SESSION['firstName'],
+                                    'lastName' => $_SESSION['lastName'],
+                                    'roles' => $_SESSION['roles']],
+            'action'            => 'adicionar-escola/enviar'
         ]);
     }
 
@@ -115,38 +115,16 @@ class Admin extends Controller
 
     }
 
-    public function editSchool ()
-    {
-        $this->model->isLogged();
-        $this->model->haveThisRole('admin');
-        echo $this->twig->render('admin/dashboard/admins/editSchool.html', [
-            'admin_data' => ['firstName' => $_SESSION['firstName'],
-                             'lastName' => $_SESSION['lastName'],
-                             'roles' => $_SESSION['roles']],
-        ]);
-    }
-
-    public function removeSchool ()
-    {
-        $this->model->isLogged();
-        $this->model->haveThisRole('admin');
-        echo $this->twig->render('admin/dashboard/admins/removeSchool.html', [
-            'admin_data' => ['firstName' => $_SESSION['firstName'],
-                             'lastName' => $_SESSION['lastName'],
-                             'roles' => $_SESSION['roles']],
-        ]);
-    }
-
-
     public function addExam ()
     {
         $this->model->isLogged();
         $this->model->haveThisRole('admin');
         echo $this->twig->render('admin/dashboard/admins/addExam.html', [
-            'admin_data' => ['firstName' => $_SESSION['firstName'],
-                             'lastName' => $_SESSION['lastName'],
-                             'roles' => $_SESSION['roles']],
-            'action'        => 'adicionar-prova/enviar'
+            'admin_data'        => ['firstName' => $_SESSION['firstName'],
+                                    'lastName' => $_SESSION['lastName'],
+                                    'roles' => $_SESSION['roles']],
+            'action'            => 'adicionar-prova/enviar',
+            'codename_schools'  => $this->model->getAllSchools()
         ]);
     }
 
@@ -166,30 +144,12 @@ class Admin extends Controller
             ];
         } else {\header('Location: ' . URLPAGE . 'admin/home');}
         $this->model->setExam($dataExam);
-        \header('Location: ' . URLPAGE . 'admin/adicionar-escola');
+        \header('Location: ' . URLPAGE . 'admin/adicionar-prova');
     }
 
-    public function editExam ()
-    {}
-
-    public function removeExam ()
-    {}
-
-
-    public function addExamManager ()
-    {}
-
-    public function editExamManager ()
-    {}
-
-    public function removeExamManager ()
-    {}
-
-
-
     // =================================================================
     // =================================================================
-    // =============================== RESOLUTIONS =====================
+    // ========================== RESOLUTIONS ==========================
     // =================================================================
     // =================================================================
 

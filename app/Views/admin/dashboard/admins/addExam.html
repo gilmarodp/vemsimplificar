@@ -6,8 +6,13 @@
             <legend><h2>Adicionar Prova</h2></legend>
 
             <div class="form-group">
-                <label for="codename_school">Codename da escola:</label>
-                <input type="text" class="form-control" id="codename_school" name="codename_school" placeholder="Exemplo: ifcefor">
+                <label for="codename_school">Selecione a escola</label>
+                <select name="codename_school" class="form-control" id="codename_school">
+                    <option value="">Nome da Escola</option>
+                    {% for codename_school in codename_schools %}
+                    <option value="{{ codename_school.codename }}">{{ codename_school.name }}</option>
+                    {% endfor %}
+                </select>
             </div>
 
             <div class="form-group">

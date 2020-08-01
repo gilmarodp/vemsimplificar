@@ -42,7 +42,7 @@ class Materials extends Controller
         $schoolData = (new Resolutions)->getSchool($data['school']);
         echo $this->twig->render('user/materials/exams/examsYears.html', [
             'name_site'                     => '',
-            'section_site'                  => 'Prova do(a) ' . $schoolData->name,
+            'section_site'                  => 'Prova(s) do(a) ' . $schoolData->name,
             'description'                   => 'Provas de vestibulares disponilizadas em PDF gratuitamente.',
             'school_name'                   => $schoolData,
             'exams'                         => (new Exams)->getAllExams($data['school'])
